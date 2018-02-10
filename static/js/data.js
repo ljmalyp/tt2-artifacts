@@ -329,7 +329,7 @@ var artifacts = {
 			'sort' : 20,
 			'name' : 'Fruit of Eden',
 			'bonus' : ' Pet Damage',
-			'rating' : .5,
+			'rating' : 0,
 			'ad' : .5,
 			'effect' : .1,
 			'max' : -1,
