@@ -90,7 +90,6 @@ function adjustWeights() {
 			artifacts.data.aom.rating += 1;
 			artifacts.data.hb.rating += .5;
 			artifacts.data.sor.rating += .5;
-			artifacts.data.foe.rating += .5;
 			artifacts.data.orc.rating += 1;
 			artifacts.data.hos2.rating += 7;
 			artifacts.data.hos.rating += .5;
