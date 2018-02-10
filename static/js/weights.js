@@ -48,7 +48,7 @@ function adjustWeights() {
 			artifacts.data.hb.rating += 1;
 			artifacts.data.sor.rating += 1;
 			artifacts.data.hos2.rating += 6;
-			artifacts.data.ig.rating += 1.75;
+			artifacts.data.ig.rating += 1.82;
 			artifacts.data.pof.rating += 1;
 			artifacts.data.a.rating += 1;
 			artifacts.data.tac.rating += 1;
@@ -65,7 +65,7 @@ function adjustWeights() {
 			artifacts.data.hb.rating += .5;
 			artifacts.data.sor.rating += .5;
 			artifacts.data.hos2.rating += 6;
-			artifacts.data.ig.rating += 3.25;
+			artifacts.data.ig.rating += 3.32;
 			artifacts.data.rt.rating += 1;
 			artifacts.data.fs.rating += 1;
 			artifacts.data.gok.rating += 1;
@@ -91,7 +91,10 @@ function adjustWeights() {
 			artifacts.data.orc.rating += 1;
 			artifacts.data.hos2.rating += 7;
 			artifacts.data.hos.rating += .5;
-			artifacts.data.ig.rating += 2.25;
+			artifacts.data.ig.rating += 2.32;
+			artifacts.data.pof.rating += 1;
+			artifacts.data.a.rating += 1;
+			artifacts.data.tac.rating += 1;
 			artifacts.data.rt.rating += .5;
 			artifacts.data.fs.rating += .5;
 			artifacts.data.gok.rating += .5;
@@ -112,7 +115,7 @@ function adjustWeights() {
 			artifacts.data.orc.rating += 1;
 			artifacts.data.hos2.rating += 7.02;
 			artifacts.data.hos.rating += .5;
-			artifacts.data.ig.rating += 3.42;
+			artifacts.data.ig.rating += 3.49;
 			artifacts.data.rt.rating += .5;
 			artifacts.data.fs.rating += .5;
 			artifacts.data.gok.rating += .5;
@@ -141,7 +144,7 @@ function adjustWeights() {
 			artifacts.data.sor.rating += .5;
 			artifacts.data.hos2.rating += 7;
 			artifacts.data.hos.rating += .5;
-			artifacts.data.ig.rating += 3.92;
+			artifacts.data.ig.rating += 3.99;
 			artifacts.data.tm.rating += 1;
 			artifacts.data.ip.rating += 1;
 			artifacts.data.rt.rating += .5;
@@ -167,7 +170,7 @@ function adjustWeights() {
 			artifacts.data.orc.rating += 1;
 			artifacts.data.hos2.rating += 7;
 			artifacts.data.hos.rating += .5;
-			artifacts.data.ig.rating += 2.25;
+			artifacts.data.ig.rating += 2.32;
 			artifacts.data.rt.rating += .5;
 			artifacts.data.fs.rating += .5;
 			artifacts.data.gok.rating += .5;
