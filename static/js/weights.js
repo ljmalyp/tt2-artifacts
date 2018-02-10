@@ -45,6 +45,7 @@ function adjustWeights() {
 	var hreduct = 0;
 	switch($('#build').val()) {
 		case 'hero':
+			artifacts.data.foe.rating += .5;
 			artifacts.data.hb.rating += 1;
 			artifacts.data.sor.rating += 1;
 			artifacts.data.hos2.rating += 6;
@@ -57,6 +58,7 @@ function adjustWeights() {
 			hreduct = 1;
 			break;
 		case 'tap':
+			artifacts.data.foe.rating += 1;
 			artifacts.data.dh.rating += 1;
 			artifacts.data.tms.rating += 1;
 			artifacts.data.ss.rating += 1;
@@ -80,6 +82,7 @@ function adjustWeights() {
 			hreduct = .5;
 			break;
 		case 'pet':
+			artifacts.data.foe.rating += 1;
 			artifacts.data.coe.rating += .41;
 			artifacts.data.dh.rating += 1;
 			artifacts.data.tms.rating += 1;
@@ -104,6 +107,7 @@ function adjustWeights() {
 			hreduct = .5;
 			break;
 		case 'sc':
+			artifacts.data.foe.rating += .67;
 			artifacts.data.coe.rating += .41;
 			artifacts.data.dh.rating += .67;
 			artifacts.data.tms.rating += .67;
@@ -134,6 +138,7 @@ function adjustWeights() {
 			hreduct = .67;
 			break;
 		case 'hs':
+			artifacts.data.foe.rating += 1;
 			artifacts.data.coe.rating += .41;
 			artifacts.data.dh.rating += 1;
 			artifacts.data.tms.rating += 1;
@@ -161,6 +166,7 @@ function adjustWeights() {
 			hreduct = .5;
 			break;
 		case 'cs':
+			artifacts.data.foe.rating += .5;
 			artifacts.data.coe.rating += .41;
 			artifacts.data.tr.rating += 1;
 			artifacts.data.aom.rating += 1;
