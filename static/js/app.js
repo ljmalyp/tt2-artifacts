@@ -191,9 +191,12 @@ function optimize() {
 		relics -= temp_artifacts.data[winner_e].cost;
 		temp_artifacts.data[winner_e].level++;
 		temp_artifacts = calculate(temp_artifacts, winner_e, false, false);
-		var progress = (1 - (relics > 0 ? relics / orelics : 0 / orelics)) * 100;
-		$('#progress').width(progress + '%');
-		$('#progress').prop('aria-valuenow', progress);
+		if(buffer-- < 0) {
+			var progress = (1 - (relics > 0 ? relics / orelics : 0 / orelics)) * 100;
+			$('#progress').width(progress + '%');
+			$('#progress').prop('aria-valuenow', progress);
+			buffer = 100;
+		}
 		window.setTimeout(optimize, 0);
 	} else {
 		var progress = 100;
@@ -262,6 +265,7 @@ function generateUpgrades() {
 			break;
 	}
 	orelics = relics;
+	buffer = 100;
 	upgrades = {};
 	temp_artifacts = $.extend(true, {}, artifacts);
 	var litmus = false;
@@ -394,7 +398,7 @@ function acceptSuggestions() {
 	$('#relics').val('');
 	$('#relics_decimal').val('');
 	artifacts = calculateAll(artifacts, true);
-	$('#recc-tab').tab('show');
+	$('#reccs-tab').tab('show');
 }
 
 function oldEff(data, k, v) {
