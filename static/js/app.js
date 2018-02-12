@@ -55,7 +55,7 @@ function generateArtifacts() {
 				row += '<span class="badge badge-' + v.color + '" id="' + k + 'expo">' + v.rating.toFixed(2).replace(/\.?0+$/, '') + '</span>';
 			row += '</td>';
 			row += '<td>';
-				row += '<button class="badge badge-secondary" type="button" data-toggle="collapse" data-target="#' + k + 'info" aria-expanded="false" aria-controls="' + k + 'info">&#x00A0;i&#x00A0;</button>';
+				row += '<button class="badge badge-secondary" type="button" data-toggle="collapse" data-target="#' + k + 'info" aria-expanded="false" aria-controls="' + k + 'info" tabindex="-1">&#x00A0;i&#x00A0;</button>';
 			row += '</td>';
 		row += '</tr>';
 		row += '<tr class="collapse" id="' + k + 'info">';
