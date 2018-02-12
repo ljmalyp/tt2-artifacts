@@ -401,8 +401,8 @@ function renderSuggestions() {
 			suggestions += '<div class="card border border-secondary ' + ($('#wolf').prop('checked') == true ? 'bg-dark' : '') + '">';
 				suggestions += '<div class="card-header d-flex justify-content-between align-items-center" id="' + k + 'deetsh">';
 					suggestions += '<span>';
-						suggestions += '<span class="d-block d-sm-none">' + v.nickname + '</span>';
-						suggestions += '<span class="d-none d-sm-block">' + v.name + '</span>';
+						suggestions += '<span class="d-inline d-sm-none">' + v.nickname + '</span>';
+						suggestions += '<span class="d-none d-sm-inline">' + v.name + '</span>';
 						suggestions += ' <small>' + v.level + ' => ' + temp_artifacts.data[k].level + '</small>';
 						suggestions += '<span class="badge badge-' + v.color + ' ml-3">+' + upgrades[k] + '</span>';
 					suggestions += '</span>';
