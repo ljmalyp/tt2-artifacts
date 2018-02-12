@@ -195,7 +195,7 @@ function optimize() {
 			var progress = (1 - (relics > 0 ? relics / orelics : 0 / orelics)) * 100;
 			$('#progress').width(progress + '%');
 			$('#progress').prop('aria-valuenow', progress);
-			buffer = 100;
+			buffer = 1000;
 		}
 		window.setTimeout(optimize, 0);
 	} else {
@@ -265,7 +265,7 @@ function generateUpgrades() {
 			break;
 	}
 	orelics = relics;
-	buffer = 100;
+	buffer = 1000;
 	upgrades = {};
 	temp_artifacts = $.extend(true, {}, artifacts);
 	var litmus = false;
