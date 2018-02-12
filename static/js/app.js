@@ -42,7 +42,7 @@ function generateArtifacts() {
 				row += '<label for="' + k + 'active" id="basic-addon' + k + '"> ' + v.name + '</label>';
 			row += '</td>';
 			row += '<td>';
-				row += '<input' + (1 == v.active ? '' : ' readonly="readonly"') + ' id="' + k + '" value="' + v.level + '" type="tel" class="form-control-sm" placeholder="0" aria-label="Level of ' + v.name + '" aria-describedby="basic-addon' + k + '"onchange="updateArtifact(\'' + k + '\')">';
+				row += '<input' + (1 == v.active ? '' : ' readonly="readonly"') + ' id="' + k + '" value="' + v.level + '" type="tel" class="form-control-sm artlvl" placeholder="0" aria-label="Level of ' + v.name + '" aria-describedby="basic-addon' + k + '"onchange="updateArtifact(\'' + k + '\')">';
 			row += '</td>';
 			row += '<td>';
 				row += '<span class="badge badge-' + v.color + '" id="' + k + 'expo">' + v.rating.toFixed(2).replace(/\.?0+$/, '') + '</span>';
