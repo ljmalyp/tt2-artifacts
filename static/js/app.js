@@ -213,7 +213,7 @@ function optimize() {
 			var progress = (1 - (relics > 0 ? relics / orelics : 0 / orelics)) * 100;
 			$('#progress').width(progress + '%');
 			$('#progress').prop('aria-valuenow', progress);
-			buffer = 100;
+			buffer = 250;
 			window.setTimeout(optimize, 1);
 		} else {
 			optimize();
