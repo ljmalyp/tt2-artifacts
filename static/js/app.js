@@ -3,9 +3,17 @@ var winner_n = '';
 var winner_value = 0;
 
 function toggleDark() {
-	$('body').removeClass('dark');
+	$('body').removeClass('bg-dark text-light');
+	$('.sticky-top').removeClass('bg-dark');
+	$('.card').removeClass('bg-dark');
+	$('.nav-link').removeClass('text-light');
+	$('table').removeClass('table-dark');
 	if($('#dark').prop('checked') == true) {
-		$('body').addClass('dark');
+		$('body').addClass('bg-dark text-light');
+		$('.sticky-top').addClass('bg-dark');
+		$('.card').addClass('bg-dark');
+		$('.nav-link').addClass('text-light');
+		$('table').addClass('table-dark');
 		window.localStorage.setItem('dark', 1);
 	} else {
 		window.localStorage.setItem('dark', 0);
@@ -26,18 +34,42 @@ function generateArtifacts() {
 		if(isNaN(v.level)) {
 			v.level = 0;
 		}
-		var div = '<div class="artifact' + (v.active == 1 ? '' : ' ignore') + '" id="'+ k + 'div"><input type="checkbox" id="' + k + 'active"' + (v.active == 1 ? ' checked="checked"' : '') + ' onchange="updateActive(\'' + k + '\');" tabindex="-1" /><label><input id="' + k + '" value="' + v.level + '" type="tel" onchange="updateArtifact(\'' + k + '\')" />' + v.name + '</label><br /><span id="' + k + 'effect">';
-		div += '</span><span id="' + k + 'ad">';
-		div += '</span><span id="' + k + 'cost">';
-		div += '</span></span><span id="' + k + 'weff">';
-		div += '</span></div>'
-		$('#artifacts').append(div);
+		var row = '<tr class="' + (1 == v.active ? '' : 'text-dark bg-secondary') + '" id="'+ k + 'row">';
+			row += '<td>';
+				row += '<input type="checkbox" aria-label="Checkbox to designate active status for ' + v.name + '" id="' + k + 'active"' + (v.active == 1 ? ' checked="checked"' : '') + ' onchange="updateActive(\'' + k + '\');" tabindex="-1">';
+			row += '</td>';
+			row += '<td>';
+				row += '<label for="' + k + 'active" id="basic-addon' + k + '"> ' + v.name + '</label>';
+			row += '</td>';
+			row += '<td>';
+				row += '<input' + (1 == v.active ? '' : ' readonly="readonly"') + ' id="' + k + '" value="' + v.level + '" type="tel" class="form-control-sm" placeholder="0" aria-label="Level of ' + v.name + '" aria-describedby="basic-addon' + k + '"onchange="updateArtifact(\'' + k + '\')">';
+			row += '</td>';
+			row += '<td>';
+				row += '<span class="badge badge-' + v.color + '" id="' + k + 'expo">' + v.rating.toFixed(2).replace(/\.?0+$/, '') + '</span>';
+			row += '</td>';
+			row += '<td>';
+				row += '<button class="badge badge-secondary" type="button" data-toggle="collapse" data-target="#' + k + 'info" aria-expanded="false" aria-controls="' + k + 'info">&#x00A0;i&#x00A0;</button>';
+			row += '</td>';
+		row += '</tr>';
+		row += '<tr class="collapse" id="' + k + 'info">';
+			row += '<td colspan="5">';
+				row += '<dl class="row">';
+					row += '<dt class="col-6 text-right">Effect</dt>';
+					row += '<dd class="col-6" id="' + k + 'effect"></dd>';
+					row += '<dt class="col-6 text-right">Artifact Damage</dt>';
+					row += '<dd class="col-6" id="' + k + 'ad"></dd>';
+					row += '<dt class="col-6 text-right">Cost to Upgrade</dt>';
+					row += '<dd class="col-6" id="' + k + 'cost"></dd>';
+					row += '<dt class="col-6 text-right">Efficiency</dt>';
+					row += '<dd class="col-6" id="' + k + 'eff"></dd>';
+				row += '</dl>';
+			row += '</td>';
+		row += '</tr>';
+		$('#artifacts').append(row);
 	});
 	window.localStorage.setItem('artifacts', JSON.stringify(artifacts));
 	window.localStorage.setItem('build', $('#build').val());
 	window.localStorage.setItem('hero', $('#hero').val());
-	window.localStorage.setItem('hero2', $('#hero2').val());
-	window.localStorage.setItem('chest', $('#chest').val());
 	window.localStorage.setItem('active', $('#active').val());
 	window.localStorage.setItem('relic_factor', $('#relic_factor').val());
 	window.localStorage.setItem('forcebos', $('#forcebos').val());
@@ -53,10 +85,12 @@ function generateArtifacts() {
 function updateActive(k) {
 	if($('#' + k + 'active').is(':checked')) {
 		artifacts.data[k].active = 1;
-		$('#' + k + 'div').removeClass('ignore');
+		$('#' + k + 'row').removeClass('text-dark bg-secondary');
+		$('#' + k).prop('readonly', false);
 	} else {
 		artifacts.data[k].active = 0;
-		$('#' + k + 'div').addClass('ignore');
+		$('#' + k + 'row').addClass('text-dark bg-secondary');
+		$('#' + k).prop('readonly', true);
 	}
 	artifacts = calculate(artifacts, k, true, true);
 }
@@ -78,30 +112,32 @@ function regenerateArtifacts() {
 		$('#' + k).val(v.level);
 		var value = '';
 		if('' != v.current_effect) {
-			value = displayEffect(v.current_effect, v.type) + v.bonus;
+			value = displayEffect(v.current_effect, v.type);
 		}
+		value += v.bonus
 		$('#' + k + 'effect').empty().append(value);
 		value = '';
 		if('' != v.current_ad) {
-			value = displayPct(v.current_ad) + ' Artifact Damage';
+			value = displayPct(v.current_ad);
 		}
 		$('#' + k + 'ad').empty().append(value);
 		value = '';
 		if('' != v.displayCost) {
-			value = v.displayCost + ' Relics to Upgrade';
+			value = v.displayCost + ' Relics';
 		}
 		$('#' + k + 'cost').empty().append(value);
 		value = '';
 		if(-1 != v.efficiency) {
-			value = v.rating.toFixed(2).replace(/\.?0+$/, '') + ' Exponent &#x2022; ' + v.efficiency.toExponential(8) + ' Efficiency';
+			value = v.efficiency.toExponential(12);
 		}
-		$('#' + k + 'weff').empty().append(value);
+		$('#' + k + 'eff').empty().append(value);
+		value = v.rating.toFixed(2).replace(/\.?0+$/, '');
+		$('#' + k + 'expo').empty().append(value);
+		$('#' + k + 'expo').removeClass().addClass('badge').addClass('badge-' + v.color);
 	});
 	window.localStorage.setItem('artifacts', JSON.stringify(artifacts));
 	window.localStorage.setItem('build', $('#build').val());
 	window.localStorage.setItem('hero', $('#hero').val());
-	window.localStorage.setItem('hero2', $('#hero2').val());
-	window.localStorage.setItem('chest', $('#chest').val());
 	window.localStorage.setItem('active', $('#active').val());
 	window.localStorage.setItem('relic_factor', $('#relic_factor').val());
 	window.localStorage.setItem('forcebos', $('#forcebos').val());
@@ -144,7 +180,36 @@ function determineAverage(data) {
 	return(y);
 }
 
+function optimize() {
+	if(relics >= temp_artifacts.data[winner_e].cost) {
+		if(undefined == upgrades[winner_e]) {
+			upgrades[winner_e] = 1;
+		} else {
+			upgrades[winner_e]++;
+		}
+		relics -= temp_artifacts.data[winner_e].cost;
+		temp_artifacts.data[winner_e].level++;
+		temp_artifacts = calculate(temp_artifacts, winner_e, false, false);
+		var progress = (1 - (relics > 0 ? relics / orelics : 0 / orelics)) * 100;
+		$('#progress').width(progress + '%');
+		$('#progress').prop('aria-valuenow', progress);
+		window.setTimeout(optimize, 0);
+	} else {
+		var progress = 100;
+		$('#progress').width(progress + '%');
+		$('#progress').prop('aria-valuenow', progress);
+		$('#progress').removeClass('progress-bar-striped progress-bar-animated');
+		renderSuggestions();
+	}
+}
+
 function generateUpgrades() {
+	$('#suggestions').empty();
+	$('#progressBar').hide();
+	$('#progress').width('0%');
+	$('#progress').prop('aria-valuenow', 0);
+	$('#progress').addClass('progress-bar-striped progress-bar-animated');
+	$('#progressBar').show();
 	$('#new_artifact').empty();
 	window.localStorage.setItem('relic_factor', $('#relic_factor').val())
 	window.localStorage.setItem('forcebos', $('#forcebos').val());
@@ -154,28 +219,24 @@ function generateUpgrades() {
 	} else {
 		window.localStorage.setItem('ocd', 0);
 	}
-	if(winner_n != '') {
+	if(winner_n != '' || 1 > artifacts.data.bos.level) {
 		$('#new_artifact').empty().append('<em>NOTE: You would be better off saving up for a new artifact.</em>');
 	}
 	var forceBOS = parseInt($('#forcebos').val());
-	var relics = new Decimal(('' == $('#relics').val() ? 0 : $('#relics').val()) + '.' + ('' == $('#relics_decimal').val() ? 0 : $('#relics_decimal').val()));
+	relics = new Decimal(('' == $('#relics').val() ? 0 : $('#relics').val()) + '.' + ('' == $('#relics_decimal').val() ? 0 : $('#relics_decimal').val()));
 	switch($('#relic_factor').val()) {
 		case '_':
 			relics = relics.toNumber();
 			break;
-
 		case 'K':
 			relics = relics.mul(1000).toNumber();
 			break;
-
 		case 'M':
 			relics = relics.mul(1000000).toNumber();
 			break;
-
 		case 'B':
 			relics = relics.mul(1000000000).toNumber();
 			break;
-
 		case 'T':
 			relics = relics.mul(1000000000000).toNumber();
 			break;
@@ -198,16 +259,18 @@ function generateUpgrades() {
 			relics = relics.mul(1000000000000000000).toNumber();
 			break;
 	}
+	orelics = relics;
 	upgrades = {};
-	var temp_artifacts = $.extend(true, {}, artifacts);
+	temp_artifacts = $.extend(true, {}, artifacts);
 	var litmus = false;
 	$.each(temp_artifacts.data, function(k,v) {
 		if(v.level > 0) { litmus = true; }
 	});
 	if(false == litmus) {
-		$('#suggestions').empty().append('<li>You must have at least 1 artifact enabled to use this.</li>');
+		$('#suggestions').empty().append('<p>You must have at least 1 artifact enabled to use this.</p>');
 		return
 	}
+	/*
 	while(forceBOS > 0 && $('#ocd').prop('checked') == false) {
 		if($('#bos_type').val() == 'level') {
 			if(relics >= temp_artifacts.data['bos'].cost) {
@@ -254,20 +317,11 @@ function generateUpgrades() {
 			break;
 		}
 	}
-	while(true) {
-		if(relics >= temp_artifacts.data[winner_e].cost) {
-			if(undefined == upgrades[winner_e]) {
-				upgrades[winner_e] = 1;
-			} else {
-				upgrades[winner_e]++;
-			}
-			relics -= temp_artifacts.data[winner_e].cost;
-			temp_artifacts.data[winner_e].level++;
-			temp_artifacts = calculate(temp_artifacts, winner_e, false, false);
-		} else {
-			break;
-		}
-	}
+	*/
+	optimize();
+}
+
+function renderSuggestions() {
 	if($('#ocd').prop('checked')) {
 		$.each(artifacts.data, function(k,v) {
 			if(k in upgrades) {
@@ -288,16 +342,38 @@ function generateUpgrades() {
 		litmus = true;
 	});
 	if(false == litmus) {
-		$('#suggestions').empty().append('<li>You cannot afford to make the next best upgrade(s). Please try again when you have more relics. Also, if you have the OCD mode on, you might need to shut it off to see results.</li>');
-		return
+		$('#suggestions').empty().append('<p>You cannot afford to make the next best upgrade(s). Please try again when you have more relics. Also, if you have the OCD mode on, you might need to shut it off to see results.</p>');
+		relics = 0;
+		return;
 	}
 	$.each(artifacts.data, function(k,v) {
 		if(k in upgrades) {
-			suggestions += '<li>' + v.name + '&#x00A0;' + v.level + '&#x00A0;=>&#x00A0;' + temp_artifacts.data[k].level + '&#x00A0;(+' + upgrades[k] + ') <span class="light">[' + displayEffect(artifacts.data[k].current_effect, artifacts.data[k].type) + '&#x00A0;=>&#x00A0;' + displayEffect(temp_artifacts.data[k].current_effect, artifacts.data[k].type) + '&#x00A0;effect&#x00A0;|&#x00A0;' + displayPct(artifacts.data[k].current_ad) + '&#x00A0;=>&#x00A0;' + displayPct(temp_artifacts.data[k].current_ad) + '&#x00A0;AD]</span></li>';
+			suggestions += '<div class="card border border-secondary ' + ($('#dark').prop('checked') == true ? 'bg-dark' : '') + '">';
+				suggestions += '<div class="card-header d-flex justify-content-between align-items-center" id="' + k + 'deetsh">';
+					suggestions += '<span>';
+						suggestions += v.name;
+						suggestions += '<span class="badge badge-' + v.color + ' ml-3">+' + upgrades[k] + '</span>';
+					suggestions += '</span>';
+					suggestions += '<button class="badge badge-secondary" type="button" data-toggle="collapse" data-target="#' + k + 'deets" aria-expanded="false" aria-controls="' + k + 'deets">&#x00A0;i&#x00A0;</button>';
+				suggestions += '</div>';
+				suggestions += '<div class="collapse" id="' + k + 'deets" aria-labelledby="' + k + 'deetsh" data-parent="#suggestions">';
+					suggestions += '<div class="card-body">';
+						suggestions += '<dl class="row">';
+							suggestions += '<dt class="col-6 text-right">Levels</dt>';
+							suggestions += '<dd class="col-6">' + v.level + ' => ' + temp_artifacts.data[k].level + '</dd>';
+							suggestions += '<dt class="col-6 text-right">Effect</dt>';
+							suggestions += '<dd class="col-6">' + displayEffect(artifacts.data[k].current_effect, artifacts.data[k].type) + ' => ' + displayEffect(temp_artifacts.data[k].current_effect, artifacts.data[k].type) + '</dd>';
+							suggestions += '<dt class="col-6 text-right">Artifact Damage</dt>';
+							suggestions += '<dd class="col-6">' + displayPct(artifacts.data[k].current_ad) + ' => ' + displayPct(temp_artifacts.data[k].current_ad) + '</dd>';
+						suggestions += '</dl>';
+					suggestions += '</div>';
+				suggestions += '</div>';
+			suggestions += '</div>';
+
 		}
 	});
 	$('#suggestions').empty().append(suggestions);
-	$('#accept').empty().append('<input type="submit" value="Complete" onclick="acceptSuggestions();" />');
+	$('#accept').empty().append('<button type="button" class="btn btn-primary" onclick="acceptSuggestions();">Complete</button>');
 }
 
 function acceptSuggestions() {
@@ -338,7 +414,7 @@ function oldEff(data, k, v) {
 	return(data);
 }
 
-function newEff(data, k, v, avglvl, cost) {
+function newEff(data, k, v, avglvl, cost, remainingArtifacts) {
 	data.data[k].current_ad = '';
 	data.data[k].current_effect = '';
 	var i = 1;
@@ -353,7 +429,7 @@ function newEff(data, k, v, avglvl, cost) {
 	}
 	var effect_eff = Math.pow(next_effect, v.rating);
 	var ad_eff = 1 + ((avglvl * v.ad)/data.totalAD);
-	var eff = Math.abs(((effect_eff * ad_eff) - 1)/cost);
+	var eff = Math.abs(((effect_eff * ad_eff) - 1)/cost/remainingArtifacts);
 	data.data[k].efficiency = eff;
 	return(data)
 }
@@ -382,7 +458,7 @@ function calculate(data, k, regenerate, pinch) {
 		data = oldEff(data, k, v);
 		var new_ad = data.data[k].current_ad;
 	} else if(v.level == 0 && next_artifact_cost != -1 && v.active == 1 && true === pinch) {
-		data = newEff(data, k, v, average_level, next_artifact_cost);
+		data = newEff(data, k, v, average_level, next_artifact_cost, Object.keys(artifact_costs).length - 3 - next_artifact);
 	} else {
 		data.data[k].current_ad = '';
 		data.data[k].current_effect = '';
@@ -427,7 +503,7 @@ function calculateAll(data, regenerate) {
 				winner_value = data.data[k].efficiency;
 			}
 		} else if(v.level == 0 && next_artifact_cost != -1 && v.active == 1) {
-			data = newEff(data, k, v, average_level, next_artifact_cost);
+			data = newEff(data, k, v, average_level, next_artifact_cost, Object.keys(artifact_costs).length - 3 - next_artifact);
 			if(-1 != data.data[k].efficiency && data.data[k].efficiency > winner_value) {
 				temp_winner_n = k;
 			}
@@ -552,8 +628,6 @@ if (storageAvailable('localStorage')) {
 	artifacts.totalAD = calculateTotalAD(artifacts.data);
 	$('#build').val(window.localStorage.getItem('build'));
 	$('#hero').val(window.localStorage.getItem('hero'));
-	$('#hero2').val(window.localStorage.getItem('hero2'));
-	$('#chest').val(window.localStorage.getItem('chest'));
 	$('#active').val(window.localStorage.getItem('active'));
 	$('#relic_factor').val(window.localStorage.getItem('relic_factor'));
 	$('#forcebos').val(window.localStorage.getItem('forcebos'));

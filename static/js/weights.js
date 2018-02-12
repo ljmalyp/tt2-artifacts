@@ -12,17 +12,10 @@ function adjustWeights() {
 		});
 	}
 	if($('#hero').val()) {
-		gtag('event', 'Hero Type', {
-			'event_category': 'Hero Type',
+		gtag('event', 'Hero', {
+			'event_category': 'Hero',
 			'event_action': 'Set',
 			'event_label': $('#hero').val(),
-		});
-	}
-	if($('#hero2').val()) {
-		gtag('event', 'Hero Super Type', {
-			'event_category': 'Hero Super Type',
-			'event_action': 'Set',
-			'event_label': $('#hero2').val(),
 		});
 	}
 	if($('#chest').val()) {
@@ -41,12 +34,15 @@ function adjustWeights() {
 	}
 	$.each(origWeights, function(k,v) {
 		artifacts.data[k].rating = v.rating;
+		artifacts.data[k].color = v.color;
 	});
 	var hreduct = 0;
 	switch($('#build').val()) {
 		case 'hero':
 			artifacts.data.foe.rating += .5;
 			artifacts.data.hb.rating += 1;
+			artifacts.data.ie.rating += .5;
+			artifacts.data.orc.rating += .5;
 			artifacts.data.sor.rating += 1;
 			artifacts.data.hos2.rating += 6;
 			artifacts.data.ig.rating += 1.82;
@@ -55,11 +51,34 @@ function adjustWeights() {
 			artifacts.data.tac.rating += 1;
 			artifacts.data.hom.rating += 1;
 			artifacts.data.roc.rating += 2.82;
+			artifacts.data.dh.color = 'danger';
+			artifacts.data.tms.color = 'danger';
+			artifacts.data.ss.color = 'danger';
+			artifacts.data.tr.color = 'danger';
+			artifacts.data.aom.color = 'danger';
+			artifacts.data.hb.color = 'success';
+			artifacts.data.sor.color = 'success';
+			artifacts.data.tm.color = 'danger';
+			artifacts.data.ip.color = 'danger';
+			artifacts.data.pof.color = 'success';
+			artifacts.data.a.color = 'success';
+			artifacts.data.tac.color = 'success';
+			artifacts.data.rt.color = 'danger';
+			artifacts.data.fs.color = 'danger';
+			artifacts.data.gok.color = 'danger';
+			artifacts.data.bor.color = 'danger';
+			artifacts.data.ga.color = 'danger';
+			artifacts.data.os.color = 'danger';
+			artifacts.data.eoe.color = 'danger';
+			artifacts.data.sg.color = 'danger';
+			artifacts.data.ho.color = 'danger';
 			hreduct = 1;
 			break;
 		case 'tap':
-			artifacts.data.foe.rating += 1;
+			artifacts.data.foe.rating += .5;
+			artifacts.data.orc.rating += .5;
 			artifacts.data.dh.rating += 1;
+			artifacts.data.foe.rating += .5;
 			artifacts.data.tms.rating += 1;
 			artifacts.data.ss.rating += 1;
 			artifacts.data.tr.rating += 1;
@@ -79,6 +98,22 @@ function adjustWeights() {
 			artifacts.data.tac.rating += .5;
 			artifacts.data.hom.rating += 1;
 			artifacts.data.roc.rating += 2.82;
+			artifacts.data.dh.color = 'success';
+			artifacts.data.tms.color = 'success';
+			artifacts.data.ss.color = 'success';
+			artifacts.data.tr.color = 'success';
+			artifacts.data.aom.color = 'success';
+			artifacts.data.tm.color = 'danger';
+			artifacts.data.ip.color = 'danger';
+			artifacts.data.rt.color = 'success';
+			artifacts.data.fs.color = 'success';
+			artifacts.data.gok.color = 'success';
+			artifacts.data.bor.color = 'success';
+			artifacts.data.ga.color = 'success';
+			artifacts.data.os.color = 'success';
+			artifacts.data.eoe.color = 'danger';
+			artifacts.data.sg.color = 'danger';
+			artifacts.data.ho.color = 'danger';
 			hreduct = .5;
 			break;
 		case 'pet':
@@ -90,7 +125,7 @@ function adjustWeights() {
 			artifacts.data.aom.rating += 1;
 			artifacts.data.hb.rating += .5;
 			artifacts.data.sor.rating += .5;
-			artifacts.data.orc.rating += 1;
+			artifacts.data.orc.rating += .5;
 			artifacts.data.hos2.rating += 7;
 			artifacts.data.hos.rating += .5;
 			artifacts.data.ig.rating += 2.32;
@@ -103,6 +138,26 @@ function adjustWeights() {
 			artifacts.data.as.rating += 1;
 			artifacts.data.hom.rating += .5;
 			artifacts.data.roc.rating += 3.32;
+			artifacts.data.dh.color = 'success';
+			artifacts.data.tms.color = 'success';
+			artifacts.data.ss.color = 'danger';
+			artifacts.data.tr.color = 'success';
+			artifacts.data.aom.color = 'success';
+			artifacts.data.foe.color = 'success';
+			artifacts.data.orc.color = 'success';
+			artifacts.data.hos.color = 'success';
+			artifacts.data.coe.color = 'warning';
+			artifacts.data.tm.color = 'danger';
+			artifacts.data.ip.color = 'danger';
+			artifacts.data.pof.color = 'success';
+			artifacts.data.a.color = 'success';
+			artifacts.data.tac.color = 'success';
+			artifacts.data.bor.color = 'danger';
+			artifacts.data.ga.color = 'danger';
+			artifacts.data.os.color = 'danger';
+			artifacts.data.eoe.color = 'danger';
+			artifacts.data.sg.color = 'danger';
+			artifacts.data.ho.color = 'danger';
 			hreduct = .5;
 			break;
 		case 'sc':
@@ -115,7 +170,7 @@ function adjustWeights() {
 			artifacts.data.aom.rating += 1;
 			artifacts.data.hb.rating += .67;
 			artifacts.data.sor.rating += .67;
-			artifacts.data.orc.rating += 1;
+			artifacts.data.orc.rating += .5;
 			artifacts.data.hos2.rating += 7.02;
 			artifacts.data.hos.rating += .5;
 			artifacts.data.ig.rating += 3.49;
@@ -134,10 +189,20 @@ function adjustWeights() {
 			artifacts.data.as.rating += 1;
 			artifacts.data.hom.rating += .67;
 			artifacts.data.roc.rating += 3.49;
+			artifacts.data.tr.color = 'success';
+			artifacts.data.aom.color = 'success';
+			artifacts.data.orc.color = 'success';
+			artifacts.data.hos.color = 'success';
+			artifacts.data.coe.color = 'warning';
+			artifacts.data.tm.color = 'danger';
+			artifacts.data.ip.color = 'danger';
+			artifacts.data.eoe.color = 'success';
+			artifacts.data.sg.color = 'success';
+			artifacts.data.ho.color = 'success';
 			hreduct = .67;
 			break;
 		case 'hs':
-			artifacts.data.foe.rating += 1;
+			artifacts.data.foe.rating += .5;
 			artifacts.data.coe.rating += .41;
 			artifacts.data.dh.rating += 1;
 			artifacts.data.tms.rating += 1;
@@ -162,6 +227,20 @@ function adjustWeights() {
 			artifacts.data.tac.rating += .5;
 			artifacts.data.hom.rating += .67;
 			artifacts.data.roc.rating += 2.49;
+			artifacts.data.dh.color = 'success';
+			artifacts.data.tms.color = 'success';
+			artifacts.data.tr.color = 'success';
+			artifacts.data.aom.color = 'success';
+			artifacts.data.hos.color = 'success';
+			artifacts.data.coe.color = 'warning';
+			artifacts.data.tm.color = 'success';
+			artifacts.data.ip.color = 'success';
+			artifacts.data.bor.color = 'success';
+			artifacts.data.ga.color = 'success';
+			artifacts.data.os.color = 'success';
+			artifacts.data.eoe.color = 'danger';
+			artifacts.data.sg.color = 'danger';
+			artifacts.data.ho.color = 'danger';
 			hreduct = .5;
 			break;
 		case 'cs':
@@ -171,8 +250,8 @@ function adjustWeights() {
 			artifacts.data.aom.rating += 1;
 			artifacts.data.hb.rating += 1;
 			artifacts.data.sor.rating += 1;
-			artifacts.data.ie.rating += 1;
-			artifacts.data.orc.rating += 1;
+			artifacts.data.ie.rating += .5;
+			artifacts.data.orc.rating += .5;
 			artifacts.data.hos2.rating += 7;
 			artifacts.data.hos.rating += .5;
 			artifacts.data.ig.rating += 2.32;
@@ -185,39 +264,150 @@ function adjustWeights() {
 			artifacts.data.as.rating += 1;
 			artifacts.data.hom.rating += 1;
 			artifacts.data.roc.rating += 3.82;
+			artifacts.data.dh.color = 'danger';
+			artifacts.data.tms.color = 'danger';
+			artifacts.data.ss.color = 'danger';
+			artifacts.data.tr.color = 'success';
+			artifacts.data.aom.color = 'success';
+			artifacts.data.hb.color = 'success';
+			artifacts.data.sor.color = 'success';
+			artifacts.data.ie.color = 'success';
+			artifacts.data.orc.color = 'success';
+			artifacts.data.hos.color = 'success';
+			artifacts.data.coe.color = 'warning';
+			artifacts.data.tm.color = 'danger';
+			artifacts.data.ip.color = 'danger';
+			artifacts.data.pof.color = 'success';
+			artifacts.data.a.color = 'success';
+			artifacts.data.tac.color = 'success';
+			artifacts.data.bor.color = 'danger';
+			artifacts.data.ga.color = 'danger';
+			artifacts.data.os.color = 'danger';
+			artifacts.data.eoe.color = 'danger';
+			artifacts.data.sg.color = 'danger';
+			artifacts.data.ho.color = 'danger';
 			hreduct = 1;
 			break;
 	}
 	switch($('#hero').val()) {
-		case 'melee':
-			artifacts.data.tsos.rating += hreduct;
-			break;
-		case 'ranged':
-			artifacts.data.fb.rating += hreduct;
-			break;
-		case 'spell':
+		// spell ground
+		case 'maya':
+		case 'kronus':
+		case 'kiki':
+		case 'beany':
+		case 'ursa':
+		case 'wally':
+		case 'pharaoh':
+		case 'cass':
+		case 'lucy':
+		case 'jazz':
+		case 'mina':
 			artifacts.data.cota.rating += hreduct;
-			break;
-	}
-	switch($('#hero2').val()) {
-		case 'ground':
+			artifacts.data.cota.color = ('hero' == $('#build').val() || 'cs' == $('#build').val() ? 'success' : 'secondary');
 			artifacts.data.ttt.rating += hreduct;
+			artifacts.data.ttt.color = ('hero' == $('#build').val() || 'cs' == $('#build').val() ? 'success' : 'secondary');;
+			artifacts.data.tsos.color = 'danger';
+			artifacts.data.fb.color = 'danger';
+			artifacts.data.hh.color = 'danger';
 			break;
-		case 'flying':
+
+		// melee ground
+		case 'zato':
+		case 'sophia':
+		case 'lance':
+		case 'gulbrand':
+		case 'rhys':
+		case 'cosette':
+		case 'jayce':
+		case 'boomoh':
+		case 'aya':
+		case 'yzafa':
+		case 'finn':
+			artifacts.data.tsos.rating += hreduct;
+			artifacts.data.tsos.color = ('hero' == $('#build').val() || 'cs' == $('#build').val() ? 'success' : 'secondary');;
+			artifacts.data.ttt.rating += hreduct;
+			artifacts.data.ttt.color = ('hero' == $('#build').val() || 'cs' == $('#build').val() ? 'success' : 'secondary');;
+			artifacts.data.cota.color = 'danger';
+			artifacts.data.fb.color = 'danger';
+			artifacts.data.hh.color = 'danger';
+			break;
+
+		// ranged ground
+		case 'pingo':
+		case 'rosabella':
+		case 'davey':
+		case 'maddie':
+		case 'sawyer':
+		case 'saje':
+		case 'dex':
+		case 'lala':
+		case 'miki':
+			artifacts.data.fb.rating += hreduct;
+			artifacts.data.fb.color = ('hero' == $('#build').val() || 'cs' == $('#build').val() ? 'success' : 'secondary');;
+			artifacts.data.ttt.rating += hreduct;
+			artifacts.data.ttt.color = ('hero' == $('#build').val() || 'cs' == $('#build').val() ? 'success' : 'secondary');;
+			artifacts.data.cota.color = 'danger';
+			artifacts.data.tsos.color = 'danger';
+			artifacts.data.hh.color = 'danger';
+			break;
+
+		// melee flying
+		case 'maple':
+		case 'nohni':
+			artifacts.data.tsos.rating += hreduct;
+			artifacts.data.tsos.color = ('hero' == $('#build').val() || 'cs' == $('#build').val() ? 'success' : 'secondary');;
 			artifacts.data.hh.rating += hreduct;
+			artifacts.data.hh.color = 'success';
+			artifacts.data.cota.color = ('hero' == $('#build').val() || 'cs' == $('#build').val() ? 'success' : 'secondary');;
+			artifacts.data.fb.color = 'danger';
+			artifacts.data.ttt.color = 'danger';
+		break;
+
+		// ranged flying
+		case 'kin':
+		case 'zolom':
+			artifacts.data.fb.rating += hreduct;
+			artifacts.data.fb.color = ('hero' == $('#build').val() || 'cs' == $('#build').val() ? 'success' : 'secondary');;
+			artifacts.data.hh.rating += hreduct;
+			artifacts.data.hh.color = ('hero' == $('#build').val() || 'cs' == $('#build').val() ? 'success' : 'secondary');;
+			artifacts.data.cota.color = 'danger';
+			artifacts.data.tsos.color = 'danger';
+			artifacts.data.ttt.color = 'danger';
 			break;
+
+		// spell flying
+		case 'titania':
+		case 'damon':
+			artifacts.data.cota.rating += hreduct;
+			artifacts.data.cota.color = ('hero' == $('#build').val() || 'cs' == $('#build').val() ? 'success' : 'secondary');;
+			artifacts.data.hh.rating += hreduct;
+			artifacts.data.hh.color = ('hero' == $('#build').val() || 'cs' == $('#build').val() ? 'success' : 'secondary');;
+			artifacts.data.tsos.color = 'danger';
+			artifacts.data.fb.color = 'danger';
+			artifacts.data.ttt.color = 'danger';
+			break;
+
 	}
 	switch($('#active').val()) {
 		case 'offline':
 			artifacts.data.zc.rating += .82;
+			artifacts.data.zc.color = 'warning';
 			artifacts.data.af.rating += 1;
+			artifacts.data.af.color = 'success';
 			break;
 		case 'online':
+			artifacts.data.zc.color = 'danger';
+			artifacts.data.af.color = 'danger';
 			artifacts.data.coc.rating += .41;
+			artifacts.data.coc.color = 'warning';
 			artifacts.data.eof.rating += .41;
+			artifacts.data.eof.color = 'warning';
 			artifacts.data.dc.rating += .41;
+			artifacts.data.dc.color = 'warning';
 			artifacts.data.is.rating += .5;
+			artifacts.data.is.color = 'info';
 			artifacts.data.gfa.rating += .41;
+			artifacts.data.gfa.color = 'warning';
 			break;
 	}
 	var i = 40;
