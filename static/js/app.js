@@ -181,6 +181,7 @@ function determineAverage(data) {
 }
 
 function optimize() {
+	$('#progressBar').show();
 	if(relics >= temp_artifacts.data[winner_e].cost) {
 		if(undefined == upgrades[winner_e]) {
 			upgrades[winner_e] = 1;
@@ -204,13 +205,13 @@ function optimize() {
 }
 
 function generateUpgrades() {
+	$('#new_artifact').empty();
+	$('#accept').empty();
 	$('#suggestions').empty();
 	$('#progressBar').hide();
 	$('#progress').width('0%');
 	$('#progress').prop('aria-valuenow', 0);
 	$('#progress').addClass('progress-bar-striped progress-bar-animated');
-	$('#progressBar').show();
-	$('#new_artifact').empty();
 	window.localStorage.setItem('relic_factor', $('#relic_factor').val())
 	window.localStorage.setItem('forcebos', $('#forcebos').val());
 	window.localStorage.setItem('bos_type', $('#bos_type').val());
