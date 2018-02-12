@@ -39,7 +39,7 @@ function adjustWeights() {
 	var hreduct = 0;
 	switch($('#build').val()) {
 		case 'hero':
-			artifacts.data.foe.rating += .5;
+			artifacts.data.foe.rating += .25;
 			artifacts.data.hb.rating += 1;
 			artifacts.data.ie.rating += .5;
 			artifacts.data.orc.rating += .5;
@@ -85,6 +85,7 @@ function adjustWeights() {
 			artifacts.data.aom.rating += 1;
 			artifacts.data.hb.rating += .5;
 			artifacts.data.sor.rating += .5;
+			artifacts.data.ie.rating += .25;
 			artifacts.data.hos2.rating += 6;
 			artifacts.data.ig.rating += 3.32;
 			artifacts.data.rt.rating += 1;
@@ -125,6 +126,7 @@ function adjustWeights() {
 			artifacts.data.aom.rating += 1;
 			artifacts.data.hb.rating += .5;
 			artifacts.data.sor.rating += .5;
+			artifacts.data.ie.rating += .25;
 			artifacts.data.orc.rating += .5;
 			artifacts.data.hos2.rating += 7;
 			artifacts.data.hos.rating += .5;
@@ -161,7 +163,7 @@ function adjustWeights() {
 			hreduct = .5;
 			break;
 		case 'sc':
-			artifacts.data.foe.rating += .67;
+			artifacts.data.foe.rating += .33;
 			artifacts.data.coe.rating += .41;
 			artifacts.data.dh.rating += .67;
 			artifacts.data.tms.rating += .67;
@@ -170,6 +172,7 @@ function adjustWeights() {
 			artifacts.data.aom.rating += 1;
 			artifacts.data.hb.rating += .67;
 			artifacts.data.sor.rating += .67;
+			artifacts.data.ie.rating += .33;
 			artifacts.data.orc.rating += .5;
 			artifacts.data.hos2.rating += 7.02;
 			artifacts.data.hos.rating += .5;
@@ -211,6 +214,7 @@ function adjustWeights() {
 			artifacts.data.aom.rating += 1;
 			artifacts.data.hb.rating += .5;
 			artifacts.data.sor.rating += .5;
+			artifacts.data.ie.rating += .25;
 			artifacts.data.hos2.rating += 7;
 			artifacts.data.hos.rating += .5;
 			artifacts.data.ig.rating += 3.99;
@@ -244,13 +248,13 @@ function adjustWeights() {
 			hreduct = .5;
 			break;
 		case 'cs':
-			artifacts.data.foe.rating += .5;
+			artifacts.data.foe.rating += .25;
 			artifacts.data.coe.rating += .41;
 			artifacts.data.tr.rating += 1;
 			artifacts.data.aom.rating += 1;
 			artifacts.data.hb.rating += 1;
 			artifacts.data.sor.rating += 1;
-			artifacts.data.ie.rating += .5;
+			artifacts.data.ie.rating += 1;
 			artifacts.data.orc.rating += .5;
 			artifacts.data.hos2.rating += 7;
 			artifacts.data.hos.rating += .5;
