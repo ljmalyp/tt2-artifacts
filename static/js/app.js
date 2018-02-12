@@ -389,7 +389,10 @@ function renderSuggestions() {
 							suggestions += '<dd class="col-9 col-sm-6">' + v.level + ' => ' + temp_artifacts.data[k].level + '</dd>';
 							suggestions += '<dt class="col-3 col-sm-6 text-right">Effect</dt>';
 							suggestions += '<dd class="col-9 col-sm-6">' + displayEffect(artifacts.data[k].current_effect, artifacts.data[k].type) + ' => ' + displayEffect(temp_artifacts.data[k].current_effect, artifacts.data[k].type) + '</dd>';
-							suggestions += '<dt class="col-3 col-sm-6 text-right">Artifact Damage</dt>';
+							suggestions += '<dt class="col-3 col-sm-6 text-right">';
+								suggestions += '<span class="d-block d-sm-none">AD</span>';
+								suggestions += '<span class="d-none d-sm-block">Artifact Damage</span>';
+							suggestions += '</dt>';
 							suggestions += '<dd class="col-9 col-sm-6">' + displayPct(artifacts.data[k].current_ad) + ' => ' + displayPct(temp_artifacts.data[k].current_ad) + '</dd>';
 						suggestions += '</dl>';
 					suggestions += '</div>';
