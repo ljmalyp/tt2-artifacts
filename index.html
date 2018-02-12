@@ -36,7 +36,7 @@
 					<p>Answer the following questions to improve the optimization of different artifacts to best suit your play style.</p>
 					<form>
 						<div class="form-row">
-							<div class="form-group col-12 col-md-6 col-lg-4">
+							<div class="form-group col-12 col-md-6 col-lg-3">
 								<label for="build">Which build do you use?</label>
 								<select class="form-control" id="build" onchange="adjustWeights();">
 									<option value="hero">Hero</option>
@@ -47,7 +47,7 @@
 									<option value="cs">Clan Ship</option>
 								</select>
 							</div>
-							<div class="form-group col-12 col-md-6 col-lg-4">
+							<div class="form-group col-12 col-md-6 col-lg-3">
 								<label for="hero">Which is your strongest hero?</label>
 								<select class="form-control" id="hero" onchange="adjustWeights();">
 									<option value="maya">Maya Muerta the Watcher</option>
@@ -89,16 +89,23 @@
 									<option value="damon">Damon of the Darkness</option>
 								</select>
 							</div>
-							<div class="form-group col-12 col-md-6 col-lg-4">
+							<div class="form-group col-12 col-md-6 col-lg-3">
 								<label for="active">Do you primarily play ...</label>
 								<select class="form-control" id="active" onchange="adjustWeights();">
 									<option value="online">Online</option>
 									<option value="offline">Offline</option>
 								</select>
 							</div>
-							<div class="form-check col-12 col-md-6 col-lg-4">
-								<input type="checkbox" class="form-check-input ml-0" id="dark" onchange="toggleDark();">
-								<label class="form-check-label ml-0" for="dark">Enable Dark Wolf Mode</label>
+							<div class="form-check col-12 col-md-6 col-lg-3">
+								<div>Choose a Theme</div>
+								<div class="btn-group btn-group-toggle" data-toggle="buttons">
+								  <label id="btnlamb" class="btn btn-info active">
+								    <input type="radio" name="theme" id="lamb" autocomplete="off" checked onchange="toggleDark();"> Pure Lamb
+								  </label>
+								  <label id="btnwolf" class="btn btn-dark">
+								    <input type="radio" name="theme" id="wolf" autocomplete="off" onchange="toggleDark();"> Dark Wolf
+								  </label>
+								</div>
 							</div>
 						</div>
 					</form>

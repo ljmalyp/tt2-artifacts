@@ -8,14 +8,18 @@ function toggleDark() {
 	$('.card').removeClass('bg-dark');
 	$('.nav-link').removeClass('text-light');
 	$('table').removeClass('table-dark');
-	if($('#dark').prop('checked') == true) {
+	if($('#wolf').prop('checked') == true) {
 		$('body').addClass('bg-dark text-light');
 		$('.sticky-top').addClass('bg-dark');
 		$('.card').addClass('bg-dark');
 		$('.nav-link').addClass('text-light');
 		$('table').addClass('table-dark');
+		$('#btnwolf').removeClass('btn-dark').addClass('btn-danger');
+		$('#btnlamb').removeClass('btn-info').addClass('btn-light');
 		window.localStorage.setItem('dark', 1);
 	} else {
+		$('#btnwolf').removeClass('btn-danger').addClass('btn-dark');
+		$('#btnlamb').removeClass('btn-light').addClass('btn-info');
 		window.localStorage.setItem('dark', 0);
 	}
 }
@@ -654,7 +658,11 @@ if (storageAvailable('localStorage')) {
 	$('#forcebos').val(window.localStorage.getItem('forcebos'));
 	$('#bos_type').val(window.localStorage.getItem('bos_type'));
 	if(window.localStorage.getItem('dark') == "1") {
-		$('#dark').prop('checked', true);
+		$('#wolf').prop('checked', true);
+		$('#lamb').prop('checked', false);
+	} else {
+		$('#wolf').prop('checked', false);
+		$('#lamb').prop('checked', true);
 	}
 	if(window.localStorage.getItem('ocd') == "1") {
 		$('#ocd').prop('checked', true);
