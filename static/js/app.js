@@ -580,7 +580,16 @@ function displayPct(value) {
 }
 
 function displayTruncated(value) {
-	if(value > 999999999999999999) {
+	if(value > 999999999999999999999) {
+		value = (value / 1000000000000000000000).toFixed(3).replace(/\.?0+$/, '');
+		value += 'e21/ac';
+	} else if(value > 99999999999999999999) {
+		value = (value / 100000000000000000000).toFixed(3).replace(/\.?0+$/, '');
+		value += 'e20';
+	} else if(value > 9999999999999999999) {
+		value = (value / 10000000000000000000).toFixed(3).replace(/\.?0+$/, '');
+		value += 'e19';
+	} else if(value > 999999999999999999) {
 		value = (value / 1000000000000000000).toFixed(3).replace(/\.?0+$/, '');
 		value += 'e18/ab';
 	} else if(value > 99999999999999999) {
