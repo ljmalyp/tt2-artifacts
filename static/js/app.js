@@ -212,6 +212,7 @@ function generateUpgrades() {
 	$('#progress').width('0%');
 	$('#progress').prop('aria-valuenow', 0);
 	$('#progress').addClass('progress-bar-striped progress-bar-animated');
+	$('#sugg-tab').tab('show');
 	window.localStorage.setItem('relic_factor', $('#relic_factor').val())
 	window.localStorage.setItem('forcebos', $('#forcebos').val());
 	window.localStorage.setItem('bos_type', $('#bos_type').val());
@@ -393,6 +394,7 @@ function acceptSuggestions() {
 	$('#relics').val('');
 	$('#relics_decimal').val('');
 	artifacts = calculateAll(artifacts, true);
+	$('#recc-tab').tab('show');
 }
 
 function oldEff(data, k, v) {
