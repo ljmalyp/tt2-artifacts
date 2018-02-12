@@ -214,8 +214,10 @@ function optimize() {
 			$('#progress').width(progress + '%');
 			$('#progress').prop('aria-valuenow', progress);
 			buffer = 100;
+			window.setTimeout(optimize, 1);
+		} else {
+			optimize();
 		}
-		window.setTimeout(optimize, 0);
 	} else {
 		var progress = 100;
 		$('#progress').width(progress + '%');
