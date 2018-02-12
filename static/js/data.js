@@ -387,7 +387,7 @@ var artifacts = {
 			'name' : 'Influential Elixir',
 			'nickname' : 'IE',
 			'bonus' : ' Clan Ship Damage',
-			'rating' : .5,
+			'rating' : 0,
 			'ad' : .5,
 			'effect' : .1,
 			'max' : -1,
