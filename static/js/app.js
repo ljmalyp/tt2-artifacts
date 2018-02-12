@@ -372,7 +372,7 @@ function renderSuggestions() {
 	}
 	$.each(artifacts.data, function(k,v) {
 		if(k in upgrades) {
-			suggestions += '<div class="card border border-secondary ' + ($('#dark').prop('checked') == true ? 'bg-dark' : '') + '">';
+			suggestions += '<div class="card border border-secondary ' + ($('#wolf').prop('checked') == true ? 'bg-dark' : '') + '">';
 				suggestions += '<div class="card-header d-flex justify-content-between align-items-center" id="' + k + 'deetsh">';
 					suggestions += '<span>';
 						suggestions += v.name;
