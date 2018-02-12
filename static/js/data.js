@@ -18,13 +18,13 @@ var artifacts = {
 			'cexpo' : 2.5,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'sov' : {
 			'active' : 1,
 			'sort' : 2,
-			'name' : 'Stone of Valrunes',
-			'nickname' : 'SoV',
+			'name' : 'Stone of the Valrunes',
+			'nickname' : 'SotV',
 			'bonus' : ' Basic Titan Gold',
 			'rating' : .41,
 			'ad' : .5,
@@ -37,7 +37,7 @@ var artifacts = {
 			'cexpo' : 1.8,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'coc' : {
 			'active' : 1,
@@ -56,7 +56,7 @@ var artifacts = {
 			'cexpo' : 1.8,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'hs' : {
 			'active' : 1,
@@ -75,7 +75,7 @@ var artifacts = {
 			'cexpo' : 1.8,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'warning'
+			'color' : 'warning'
 		},
 		'bop' : {
 			'active' : 1,
@@ -94,7 +94,7 @@ var artifacts = {
 			'cexpo' : 2.2,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'warning'
+			'color' : 'warning'
 		},
 		'zc' : {
 			'active' : 1,
@@ -113,7 +113,7 @@ var artifacts = {
 			'cexpo' : 1.8,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'gfa' : {
 			'active' : 1,
@@ -132,7 +132,7 @@ var artifacts = {
 			'cexpo' : 1.8,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'coe' : {
 			'active' : 1,
@@ -151,7 +151,7 @@ var artifacts = {
 			'cexpo' : 1.8,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'hsw' : {
 			'active' : 1,
@@ -170,7 +170,7 @@ var artifacts = {
 			'cexpo' : 2.2,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'dr' : {
 			'active' : 1,
@@ -189,7 +189,7 @@ var artifacts = {
 			'cexpo' : 2,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'dh' : {
 			'active' : 1,
@@ -208,7 +208,7 @@ var artifacts = {
 			'cexpo' : 1.7,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'ss' : {
 			'active' : 1,
@@ -227,7 +227,7 @@ var artifacts = {
 			'cexpo' : 2,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'tr' : {
 			'active' : 1,
@@ -246,7 +246,7 @@ var artifacts = {
 			'cexpo' : 1.7,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'hb' : {
 			'active' : 1,
@@ -265,7 +265,7 @@ var artifacts = {
 			'cexpo' : 1.7,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'tsos' : {
 			'active' : 1,
@@ -284,7 +284,7 @@ var artifacts = {
 			'cexpo' : 1.7,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'fb' : {
 			'active' : 1,
@@ -303,7 +303,7 @@ var artifacts = {
 			'cexpo' : 1.7,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'cota' : {
 			'active' : 1,
@@ -322,7 +322,7 @@ var artifacts = {
 			'cexpo' : 1.7,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'ttt' : {
 			'active' : 1,
@@ -341,7 +341,7 @@ var artifacts = {
 			'cexpo' : 1.7,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'hh' : {
 			'active' : 1,
@@ -360,7 +360,7 @@ var artifacts = {
 			'cexpo' : 1.7,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'foe' : {
 			'active' : 1,
@@ -379,7 +379,7 @@ var artifacts = {
 			'cexpo' : 2,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'ie' : {
 			'active' : 1,
@@ -398,7 +398,7 @@ var artifacts = {
 			'cexpo' : 1.7,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'orc' : {
 			'active' : 1,
@@ -417,7 +417,7 @@ var artifacts = {
 			'cexpo' : 1.8,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'hos2' : {
 			'active' : 1,
@@ -436,7 +436,7 @@ var artifacts = {
 			'cexpo' : 2.2,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'ao' : {
 			'active' : 1,
@@ -455,7 +455,7 @@ var artifacts = {
 			'cexpo' : 2.2,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'warning'
+			'color' : 'warning'
 		},
 		'af' : {
 			'active' : 1,
@@ -474,7 +474,7 @@ var artifacts = {
 			'cexpo' : 1.7,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'hos' : {
 			'active' : 1,
@@ -493,7 +493,7 @@ var artifacts = {
 			'cexpo' : 1.7,
 			'type' : 'pct',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'td' : {
 			'active' : 1,
@@ -512,7 +512,7 @@ var artifacts = {
 			'cexpo' : 2,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'hs2' : {
 			'active' : 1,
@@ -531,7 +531,7 @@ var artifacts = {
 			'cexpo' : 2,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'roc' : {
 			'active' : 1,
@@ -550,7 +550,7 @@ var artifacts = {
 			'cexpo' : 2.2,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'bod' : {
 			'active' : 1,
@@ -569,7 +569,7 @@ var artifacts = {
 			'cexpo' : 2,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'hom' : {
 			'active' : 1,
@@ -588,7 +588,7 @@ var artifacts = {
 			'cexpo' : 2,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'tp' : {
 			'active' : 1,
@@ -607,7 +607,7 @@ var artifacts = {
 			'cexpo' : 2,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'warning'
+			'color' : 'warning'
 		},
 		'as' : {
 			'active' : 1,
@@ -626,7 +626,7 @@ var artifacts = {
 			'cexpo' : 2,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'ig' : {
 			'active' : 1,
@@ -645,7 +645,7 @@ var artifacts = {
 			'cexpo' : 1.8,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'tm' : {
 			'active' : 1,
@@ -664,7 +664,7 @@ var artifacts = {
 			'cexpo' : 1.7,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'rt' : {
 			'active' : 1,
@@ -683,7 +683,7 @@ var artifacts = {
 			'cexpo' : 1.7,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'lp' : {
 			'active' : 1,
@@ -702,7 +702,7 @@ var artifacts = {
 			'cexpo' : 1.7,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'warning'
+			'color' : 'warning'
 		},
 		'bor' : {
 			'active' : 1,
@@ -721,7 +721,7 @@ var artifacts = {
 			'cexpo' : 1.7,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'pof' : {
 			'active' : 1,
@@ -740,7 +740,7 @@ var artifacts = {
 			'cexpo' : 1.7,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'eoe' : {
 			'active' : 1,
@@ -759,7 +759,7 @@ var artifacts = {
 			'cexpo' : 1.7,
 			'type' : 'multiply',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'hoti' : {
 			'active' : 1,
@@ -778,7 +778,7 @@ var artifacts = {
 			'cexpo' : 2.6,
 			'type' : 'pct',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'pt' : {
 			'active' : 1,
@@ -797,7 +797,7 @@ var artifacts = {
 			'cexpo' : 3,
 			'type' : 'add',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'fs' : {
 			'active' : 1,
@@ -816,7 +816,7 @@ var artifacts = {
 			'cexpo' : 2.4,
 			'type' : 'add',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'rof' : {
 			'active' : 1,
@@ -835,7 +835,7 @@ var artifacts = {
 			'cexpo' : 2.4,
 			'type' : 'add',
 			'level' : 0,
-      'color' : 'warning'
+			'color' : 'warning'
 		},
 		'ga' : {
 			'active' : 1,
@@ -854,7 +854,7 @@ var artifacts = {
 			'cexpo' : 2.4,
 			'type' : 'add',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'a' : {
 			'active' : 1,
@@ -868,12 +868,12 @@ var artifacts = {
 			'max' : 30,
 			'gmax' : 0,
 			'grate' : 0,
-      'cexpo' : 2.4,
+			'cexpo' : 2.4,
 			'gexpo' : 1,
 			'ccoef' : .6,
 			'type' : 'add',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'sg' : {
 			'active' : 1,
@@ -892,7 +892,7 @@ var artifacts = {
 			'cexpo' : 2.4,
 			'type' : 'add',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'ip' : {
 			'active' : 1,
@@ -911,7 +911,7 @@ var artifacts = {
 			'cexpo' : 3,
 			'type' : 'add',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'gok' : {
 			'active' : 1,
@@ -930,7 +930,7 @@ var artifacts = {
 			'cexpo' : 3,
 			'type' : 'add',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'ts' : {
 			'active' : 1,
@@ -949,7 +949,7 @@ var artifacts = {
 			'cexpo' : 3,
 			'type' : 'add',
 			'level' : 0,
-      'color' : 'warning'
+			'color' : 'warning'
 		},
 		'os' : {
 			'active' : 1,
@@ -968,7 +968,7 @@ var artifacts = {
 			'cexpo' : 3,
 			'type' : 'add',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'tac' : {
 			'active' : 1,
@@ -987,7 +987,7 @@ var artifacts = {
 			'cexpo' : 3,
 			'type' : 'add',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'ho' : {
 			'active' : 1,
@@ -1006,7 +1006,7 @@ var artifacts = {
 			'cexpo' : 3,
 			'type' : 'add',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'ae' : {
 			'active' : 1,
@@ -1025,7 +1025,7 @@ var artifacts = {
 			'cexpo' : 3,
 			'type' : 'add',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'ms' : {
 			'active' : 1,
@@ -1044,7 +1044,7 @@ var artifacts = {
 			'cexpo' : 2.6,
 			'type' : 'add',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'eof' : {
 			'active' : 1,
@@ -1063,7 +1063,7 @@ var artifacts = {
 			'cexpo' : 3,
 			'type' : 'pct',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'dc' : {
 			'active' : 1,
@@ -1082,7 +1082,7 @@ var artifacts = {
 			'cexpo' : 2.6,
 			'type' : 'pct',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'is' : {
 			'active' : 1,
@@ -1101,7 +1101,7 @@ var artifacts = {
 			'cexpo' : 2.1,
 			'type' : 'pct',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'aom' : {
 			'active' : 1,
@@ -1120,7 +1120,7 @@ var artifacts = {
 			'cexpo' : 2.5,
 			'type' : 'pct',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'eotk' : {
 			'active' : 1,
@@ -1139,7 +1139,7 @@ var artifacts = {
 			'cexpo' : 2.5,
 			'type' : 'pct',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'lkm' : {
 			'active' : 1,
@@ -1158,7 +1158,7 @@ var artifacts = {
 			'cexpo' : 3,
 			'type' : 'pct',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'sor' : {
 			'active' : 1,
@@ -1177,7 +1177,7 @@ var artifacts = {
 			'cexpo' : 2.6,
 			'type' : 'pct',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'tms' : {
 			'active' : 1,
@@ -1196,7 +1196,7 @@ var artifacts = {
 			'cexpo' : 2.6,
 			'type' : 'pct',
 			'level' : 0,
-      'color' : 'secondary'
+			'color' : 'secondary'
 		},
 		'as2' : {
 			'active' : 1,
@@ -1215,7 +1215,7 @@ var artifacts = {
 			'cexpo' : 2.6,
 			'type' : 'pct',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		},
 		'wod' : {
 			'active' : 1,
@@ -1234,7 +1234,7 @@ var artifacts = {
 			'cexpo' : 2.6,
 			'type' : 'add',
 			'level' : 0,
-      'color' : 'info'
+			'color' : 'info'
 		}
 	}
 };
