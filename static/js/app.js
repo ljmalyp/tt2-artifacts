@@ -401,7 +401,9 @@ function renderSuggestions() {
 			suggestions += '<div class="card border border-secondary ' + ($('#wolf').prop('checked') == true ? 'bg-dark' : '') + '">';
 				suggestions += '<div class="card-header d-flex justify-content-between align-items-center" id="' + k + 'deetsh">';
 					suggestions += '<span>';
-						suggestions += v.name;
+						suggestions += '<span class="d-block d-sm-none">' + v.nickname + '</span>';
+						suggestions += '<span class="d-none d-sm-block">' + v.name + '</span>';
+						suggestions += ' <small>' + v.level + ' => ' + temp_artifacts.data[k].level + '</small>';
 						suggestions += '<span class="badge badge-' + v.color + ' ml-3">+' + upgrades[k] + '</span>';
 					suggestions += '</span>';
 					suggestions += '<button class="badge badge-secondary" type="button" data-toggle="collapse" data-target="#' + k + 'deets" aria-expanded="false" aria-controls="' + k + 'deets">&#x00A0;i&#x00A0;</button>';
@@ -409,8 +411,6 @@ function renderSuggestions() {
 				suggestions += '<div class="collapse" id="' + k + 'deets" aria-labelledby="' + k + 'deetsh" data-parent="#suggestions">';
 					suggestions += '<div class="card-body">';
 						suggestions += '<dl class="row">';
-							suggestions += '<dt class="col-3 col-sm-6 text-right">Levels</dt>';
-							suggestions += '<dd class="col-9 col-sm-6">' + v.level + ' => ' + temp_artifacts.data[k].level + '</dd>';
 							suggestions += '<dt class="col-3 col-sm-6 text-right">Effect</dt>';
 							suggestions += '<dd class="col-9 col-sm-6">' + displayEffect(artifacts.data[k].current_effect, artifacts.data[k].type) + ' => ' + displayEffect(temp_artifacts.data[k].current_effect, artifacts.data[k].type) + '</dd>';
 							suggestions += '<dt class="col-3 col-sm-6 text-right">';
