@@ -249,43 +249,66 @@ function generateUpgrades() {
 	}
 	var forceBOS = parseInt($('#forcebos').val());
 	relics = new Decimal(('' == $('#relics').val() ? 0 : $('#relics').val()) + '.' + ('' == $('#relics_decimal').val() ? 0 : $('#relics_decimal').val()));
+	buffer = 0;
 	switch($('#relic_factor').val()) {
 		case '_':
 			relics = relics.toNumber();
+			buffer = 100;
 			break;
 		case 'K':
 			relics = relics.mul(1000).toNumber();
+			buffer = 100;
 			break;
 		case 'M':
 			relics = relics.mul(1000000).toNumber();
+			buffer = 100;
 			break;
 		case 'B':
 			relics = relics.mul(1000000000).toNumber();
+			buffer = 250;
 			break;
 		case 'T':
 			relics = relics.mul(1000000000000).toNumber();
+			buffer = 250;
 			break;
 		case 'e13':
 			relics = relics.mul(10000000000000).toNumber();
+			buffer = 300;
 			break;
 		case 'e14':
 			relics = relics.mul(100000000000000).toNumber();
+			buffer = 400;
 			break;
 		case 'e15':
 			relics = relics.mul(1000000000000000).toNumber();
+			buffer = 500;
 			break;
 		case 'e16':
 			relics = relics.mul(10000000000000000).toNumber();
+			buffer = 600;
 			break;
 		case 'e17':
 			relics = relics.mul(100000000000000000).toNumber();
+			buffer = 700;
 			break;
 		case 'e18':
 			relics = relics.mul(1000000000000000000).toNumber();
+			buffer = 800;
+			break;
+		case 'e19':
+			relics = relics.mul(10000000000000000000).toNumber();
+			buffer = 900;
+			break;
+		case 'e20':
+			relics = relics.mul(100000000000000000000).toNumber();
+			buffer = 1000;
+			break;
+		case 'e21':
+			relics = relics.mul(1000000000000000000000).toNumber();
+			buffer = 1100;
 			break;
 	}
 	orelics = relics;
-	buffer = 100;
 	upgrades = {};
 	temp_artifacts = $.extend(true, {}, artifacts);
 	var litmus = false;
