@@ -644,5 +644,11 @@ if (storageAvailable('localStorage')) {
 	toggleDark();
 }
 
+$('input[type="tel"]').on('focus', function(){
+  $(this).data('fontSize', $(this).css('font-size')).css('font-size', '16px');
+}).on('blur', function(){
+  $(this).css('font-size', $(this).data('fontSize'));
+});
+
 var origWeights = jQuery.extend(true, {}, artifacts.data);
 generateArtifacts();
