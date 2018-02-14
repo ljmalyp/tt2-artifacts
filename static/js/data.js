@@ -518,7 +518,7 @@ var artifacts = {
 			'active' : 1,
 			'sort' : 28,
 			'name' : 'Helheim Skull',
-			'nickname' : 'HS',
+			'nickname' : 'HSk',
 			'bonus' : ' Boss Damage',
 			'rating' : 1,
 			'ad' : 1,
