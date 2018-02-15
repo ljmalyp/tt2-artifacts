@@ -1,6 +1,7 @@
 var winner_e = '';
 var winner_n = '';
 var winner_value = 0;
+var obfuscate = 0;
 
 function toggleDark() {
 	$('body').removeClass('bg-dark text-light');
@@ -185,6 +186,7 @@ function determineAverage(data) {
 function optimize() {
 	$('#progressBar').show();
 	if(relics >= temp_artifacts.data[winner_e].cost) {
+		obfuscate++;
 		if(undefined == upgrades[winner_e]) {
 			upgrades[winner_e] = 1;
 		} else {
@@ -212,6 +214,7 @@ function optimize() {
 }
 
 function generateUpgrades() {
+	obfuscate = 0;
 	$('#new_artifact').empty();
 	$('#accept').empty();
 	$('#suggestions').empty();
@@ -307,6 +310,7 @@ function renderSuggestions() {
 	var step = $('#ocd').val();
 	if(1 != step) {
 		$.each(artifacts.data, function(k,v) {
+			obfuscate++;
 			if(k in upgrades) {
 				var x = Math.floor(temp_artifacts.data[k].level/step) * step;
 				if(x > artifacts.data[k].level) {
@@ -329,6 +333,7 @@ function renderSuggestions() {
 		relics = 0;
 		return;
 	}
+	console.log(obfuscate);
 	$.each(artifacts.data, function(k,v) {
 		if(k in upgrades) {
 			suggestions += '<div class="card border border-secondary ' + ($('#wolf').prop('checked') == true ? 'bg-dark' : '') + '">';
@@ -424,6 +429,7 @@ function newEff(data, k, v, avglvl, cost, remainingArtifacts) {
 function calculateTotalAD(data, update) {
 	var total = 0;
 	$.each(data, function(k,v) {
+		obfuscate++;
 		total += v.level * v.ad;
 	});
 	if(true == update) {
@@ -433,6 +439,7 @@ function calculateTotalAD(data, update) {
 }
 
 function calculate(data, k, regenerate, pinch) {
+	obfuscate++;
 	var next_artifact = countArtifacts(artifacts.data) + 1;
 	var next_artifact_cost = artifact_costs[next_artifact];
 	var average_level = determineAverage(artifacts.data);
@@ -454,6 +461,7 @@ function calculate(data, k, regenerate, pinch) {
 	var temp_winner_n = ''
 	winner_value = 0;
 	$.each(data.data, function(k,v) {
+		obfuscate++;
 		if(-1 != v.efficiency && v.efficiency > winner_value) {
 			if(v.level > 0 && v.active == 1) {
 				winner_e = k;
