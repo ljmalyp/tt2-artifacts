@@ -368,7 +368,7 @@ function renderSuggestions() {
 	});
 	var alice = new Date();
 	var curiouser = alice.getTime() - white_rabbit.getTime();
-	$('#pudding').empty().append('Total Calculations Performed: ' + obfuscate + ' in ' + (curiouser / 1000).toFixed(3) + 's (' + (obfuscate/curiouser/1000).toFixed(3) + '/s)');
+	$('#pudding').empty().append('Total Calculations Performed: ' + obfuscate + ' in ' + (curiouser / 1000).toFixed(3) + 's (' + ((obfuscate/curiouser) * 1000).toFixed(3) + '/s)');
 	$('#suggestions').empty().append(suggestions);
 	$('#accept').empty().append('<button type="button" class="btn btn-primary" onclick="acceptSuggestions();">Complete</button>');
 }
