@@ -64,7 +64,7 @@ var artifacts = {
 			'name' : 'Heroic Shield',
 			'nickname' : 'HSh',
 			'bonus' : ' Boss Gold',
-			'rating' : .82,
+			'rating' : .41,
 			'ad' : .4,
 			'effect' : .2,
 			'max' : -1,
