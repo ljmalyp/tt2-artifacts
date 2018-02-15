@@ -107,7 +107,8 @@ function checkAll() {
 	$.each(artifacts.data, function(k,v) {
 		$('#' + k + 'active').prop('checked', true);
 		artifacts.data[k].active = 1;
-		$('#' + k + 'div').removeClass('ignore');
+		$('#' + k + 'row').removeClass('text-dark bg-secondary');
+		$('#' + k).prop('readonly', false);
 	});
 	artifacts = calculateAll(artifacts, true);
 }
@@ -186,7 +187,7 @@ function determineAverage(data) {
 }
 
 function optimize() {
-	if(relics >= temp_artifacts.data[winner_e].cost) {
+	while(buffer-- > 0 && relics >= temp_artifacts.data[winner_e].cost) {
 		obfuscate++;
 		if(undefined == upgrades[winner_e]) {
 			upgrades[winner_e] = 1;
@@ -196,15 +197,13 @@ function optimize() {
 		relics -= temp_artifacts.data[winner_e].cost;
 		temp_artifacts.data[winner_e].level++;
 		temp_artifacts = calculate(temp_artifacts, winner_e, false, false);
-		if(buffer-- < 0) {
-			var progress = (1 - (relics > 0 ? relics / orelics : 0 / orelics)) * 100;
-			$('#progress').width(progress + '%');
-			$('#progress').prop('aria-valuenow', progress);
-			buffer = obuffer;
-			window.setTimeout(optimize, 1);
-		} else {
-			optimize();
-		}
+	}
+ 	if(relics >= temp_artifacts.data[winner_e].cost) {
+		var progress = (1 - (relics > 0 ? relics / orelics : 0 / orelics)) * 100;
+		$('#progress').width(progress + '%');
+		$('#progress').prop('aria-valuenow', progress);
+		buffer = obuffer;
+		window.setTimeout(optimize, 1);
 	} else {
 		var progress = 100;
 		$('#progress').width(progress + '%');
@@ -240,7 +239,7 @@ function generateUpgrades() {
 	switch($('#relic_factor').val()) {
 		case '_':
 			relics = relics.toNumber();
-			buffer = 100;
+			buffer = 10;
 			break;
 		case 'K':
 			relics = relics.mul(1000).toNumber();
@@ -248,51 +247,51 @@ function generateUpgrades() {
 			break;
 		case 'M':
 			relics = relics.mul(1000000).toNumber();
-			buffer = 100;
+			buffer = 250;
 			break;
 		case 'B':
 			relics = relics.mul(1000000000).toNumber();
-			buffer = 250;
+			buffer = 500;
 			break;
 		case 'T':
 			relics = relics.mul(1000000000000).toNumber();
-			buffer = 250;
+			buffer = 750;
 			break;
 		case 'e13':
 			relics = relics.mul(10000000000000).toNumber();
-			buffer = 500;
+			buffer = 1000;
 			break;
 		case 'e14':
 			relics = relics.mul(100000000000000).toNumber();
-			buffer = 750;
+			buffer = 2500;
 			break;
 		case 'e15':
 			relics = relics.mul(1000000000000000).toNumber();
-			buffer = 1000;
+			buffer = 5000;
 			break;
 		case 'e16':
 			relics = relics.mul(10000000000000000).toNumber();
-			buffer = 2500;
+			buffer = 7500;
 			break;
 		case 'e17':
 			relics = relics.mul(100000000000000000).toNumber();
-			buffer = 2500;
+			buffer = 10000;
 			break;
 		case 'e18':
 			relics = relics.mul(1000000000000000000).toNumber();
-			buffer = 2500;
+			buffer = 25000;
 			break;
 		case 'e19':
 			relics = relics.mul(10000000000000000000).toNumber();
-			buffer = 2500;
+			buffer = 50000;
 			break;
 		case 'e20':
 			relics = relics.mul(100000000000000000000).toNumber();
-			buffer = 2500;
+			buffer = 75000;
 			break;
 		case 'e21':
 			relics = relics.mul(1000000000000000000000).toNumber();
-			buffer = 2500;
+			buffer = 100000;
 			break;
 	}
 	orelics = relics;
