@@ -218,6 +218,7 @@ function generateUpgrades() {
 	obfuscate = 0;
 	white_rabbit = new Date();
 	$('#new_artifact').empty();
+	$('#pudding').empty();
 	$('#accept').empty();
 	$('#suggestions').empty();
 	$('#progressBar').hide();
