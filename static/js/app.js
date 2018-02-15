@@ -2,6 +2,7 @@ var winner_e = '';
 var winner_n = '';
 var winner_value = 0;
 var obfuscate = 0;
+var white_rabbit = 0;
 
 function toggleDark() {
 	$('body').removeClass('bg-dark text-light');
@@ -215,6 +216,7 @@ function optimize() {
 
 function generateUpgrades() {
 	obfuscate = 0;
+	white_rabbit = new Date();
 	$('#new_artifact').empty();
 	$('#accept').empty();
 	$('#suggestions').empty();
@@ -363,7 +365,9 @@ function renderSuggestions() {
 
 		}
 	});
-	$('#pudding').empty().append('Total Calculations Performed: ' + obfuscate);
+	var alice = new Date();
+	var curiouser = alice.getTime() - white_rabbit.getTime();
+	$('#pudding').empty().append('Total Calculations Performed: ' + obfuscate + ' in ' + (curiouser / 1000).toFixed(3) + 's (' + (obfuscate/curiouser/1000).toFixed(3) + '/s)');
 	$('#suggestions').empty().append(suggestions);
 	$('#accept').empty().append('<button type="button" class="btn btn-primary" onclick="acceptSuggestions();">Complete</button>');
 }
