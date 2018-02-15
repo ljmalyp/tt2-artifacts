@@ -26,7 +26,7 @@ var artifacts = {
 			'name' : 'Stone of the Valrunes',
 			'nickname' : 'SotV',
 			'bonus' : ' Basic Titan Gold',
-			'rating' : .41,
+			'rating' : .20,
 			'ad' : .5,
 			'effect' : .3,
 			'max' : -1,
@@ -75,7 +75,7 @@ var artifacts = {
 			'cexpo' : 1.8,
 			'type' : 'multiply',
 			'level' : 0,
-			'color' : 'warning'
+			'color' : 'secondary'
 		},
 		'bop' : {
 			'active' : 1,
