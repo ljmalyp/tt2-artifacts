@@ -434,8 +434,8 @@ function adjustWeights() {
 			artifacts.data.gfa.color = 'warning';
 			break;
 		case 'boss':
-			artifacts.data.gfa.rating += .41;
-			artifacts.data.gfa.color = 'warning';
+			artifacts.data.hs.rating += .41;
+			artifacts.data.hs.color = 'warning';
 			break;
 		case 'sov':
 			artifacts.data.sov.rating += .62;
