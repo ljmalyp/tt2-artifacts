@@ -311,7 +311,7 @@ function generateUpgrades() {
 }
 
 function renderSuggestions() {
-	var step = $('#ocd').val();
+	var step = (null == $('#ocd').val() ? 1 : $('#ocd').val());
 	if(1 != step) {
 		$.each(artifacts.data, function(k,v) {
 			obfuscate++;
