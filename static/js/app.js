@@ -24,14 +24,6 @@ function toggleDark() {
 	}
 }
 
-function ocdOCD() {
-	if($('#ocd').prop('checked') == true) {
-		window.localStorage.setItem('ocd', 1);
-	} else {
-		window.localStorage.setItem('ocd', 0);
-	}
-}
-
 function generateArtifacts() {
 	$('#artifacts').empty();
 	$.each(artifacts.data, function(k,v) {
@@ -92,11 +84,7 @@ function generateArtifacts() {
 	window.localStorage.setItem('relic_factor', $('#relic_factor').val());
 	window.localStorage.setItem('forcebos', $('#forcebos').val());
 	window.localStorage.setItem('bos_type', $('#bos_type').val());
-	if($('#ocd').prop('checked') == true) {
-		window.localStorage.setItem('ocd', 1);
-	} else {
-		window.localStorage.setItem('ocd', 0);
-	}
+	window.localStorage.setItem('ocd', $('#ocd').val());
 	adjustWeights();
 }
 
@@ -160,11 +148,7 @@ function regenerateArtifacts() {
 	window.localStorage.setItem('relic_factor', $('#relic_factor').val());
 	window.localStorage.setItem('forcebos', $('#forcebos').val());
 	window.localStorage.setItem('bos_type', $('#bos_type').val());
-	if($('#ocd').prop('checked') == true) {
-		window.localStorage.setItem('ocd', 1);
-	} else {
-		window.localStorage.setItem('ocd', 0);
-	}
+	window.localStorage.setItem('ocd', $('#ocd').val());
 }
 
 function updateArtifact(k) {
@@ -239,11 +223,7 @@ function generateUpgrades() {
 	window.localStorage.setItem('relic_factor', $('#relic_factor').val())
 	window.localStorage.setItem('forcebos', $('#forcebos').val());
 	window.localStorage.setItem('bos_type', $('#bos_type').val());
-	if($('#ocd').prop('checked') == true) {
-		window.localStorage.setItem('ocd', 1);
-	} else {
-		window.localStorage.setItem('ocd', 0);
-	}
+	window.localStorage.setItem('ocd', $('#ocd').val());
 	if(winner_n != '' || 1 > artifacts.data.bos.level) {
 		$('#new_artifact').empty().append('<em>NOTE: You would be better off saving up for a new artifact.</em>');
 	}
@@ -297,15 +277,15 @@ function generateUpgrades() {
 			break;
 		case 'e19':
 			relics = relics.mul(10000000000000000000).toNumber();
-			buffer = 12500;
+			buffer = 15000;
 			break;
 		case 'e20':
 			relics = relics.mul(100000000000000000000).toNumber();
-			buffer = 15000;
+			buffer = 25000;
 			break;
 		case 'e21':
 			relics = relics.mul(1000000000000000000000).toNumber();
-			buffer = 20000;
+			buffer = 50000;
 			break;
 	}
 	orelics = relics;
@@ -320,62 +300,15 @@ function generateUpgrades() {
 		$('#suggestions').empty().append('<p>You must have at least 1 artifact enabled to use this.</p>');
 		return
 	}
-	/*
-	while(forceBOS > 0 && $('#ocd').prop('checked') == false) {
-		if($('#bos_type').val() == 'level') {
-			if(relics >= temp_artifacts.data['bos'].cost) {
-				forceBOS--;
-				if(undefined == upgrades['bos']) {
-					upgrades['bos'] = 1;
-				} else {
-					upgrades['bos']++;
-				}
-				relics -= temp_artifacts.data['bos'].cost;
-				temp_artifacts.data['bos'].level++;
-				temp_artifacts = calculate(temp_artifacts, 'bos', false, false);
-			} else {
-				forceBOS = 0;
-			}
-		} else {
-			var bos_pct = forceBOS/100;
-			var bos_relics = relics * bos_pct;
-			while(true) {
-				if(bos_relics >= temp_artifacts.data['bos'].cost) {
-					bos_relics -= temp_artifacts.data['bos'].cost;
-					if(undefined == upgrades['bos']) {
-						upgrades['bos'] = 1;
-					} else {
-						upgrades['bos']++;
-					}
-					relics -= temp_artifacts.data['bos'].cost;
-					temp_artifacts.data['bos'].level++;
-					temp_artifacts = calculate(temp_artifacts, 'bos', false, false);
-				} else if(relics >= temp_artifacts.data['bos'].cost) {
-					if(undefined == upgrades['bos']) {
-						upgrades['bos'] = 1;
-					} else {
-						upgrades['bos']++;
-					}
-					relics -= temp_artifacts.data['bos'].cost;
-					temp_artifacts.data['bos'].level++;
-					temp_artifacts = calculate(temp_artifacts, 'bos', false, false);
-					break;
-				} else {
-					break;
-				}
-			}
-			break;
-		}
-	}
-	*/
 	optimize();
 }
 
 function renderSuggestions() {
-	if($('#ocd').prop('checked')) {
+	var step = $('#ocd').val();
+	if(1 != step) {
 		$.each(artifacts.data, function(k,v) {
 			if(k in upgrades) {
-				var x = Math.floor(temp_artifacts.data[k].level/100) * 100;
+				var x = Math.floor(temp_artifacts.data[k].level/step) * step;
 				if(x > artifacts.data[k].level) {
 					temp_artifacts.data[k].level = x;
 					temp_artifacts = calculate(temp_artifacts, k, false, false);
@@ -392,7 +325,7 @@ function renderSuggestions() {
 		litmus = true;
 	});
 	if(false == litmus) {
-		$('#suggestions').empty().append('<p>You cannot afford to make the next best upgrade(s). Please try again when you have more relics. Also, if you have the OCD mode on, you might need to shut it off to see results.</p>');
+		$('#suggestions').empty().append('<p>You cannot afford to make the next best upgrade(s). Please try again when you have more relics or try lowering your rounding to see results.</p>');
 		relics = 0;
 		return;
 	}
@@ -695,15 +628,13 @@ if (storageAvailable('localStorage')) {
 	$('#relic_factor').val(window.localStorage.getItem('relic_factor'));
 	$('#forcebos').val(window.localStorage.getItem('forcebos'));
 	$('#bos_type').val(window.localStorage.getItem('bos_type'));
+	$('#ocd').val(window.localStorage.getItem('ocd'));
 	if(window.localStorage.getItem('dark') == "1") {
 		$('#wolf').prop('checked', true);
 		$('#lamb').prop('checked', false);
 	} else {
 		$('#wolf').prop('checked', false);
 		$('#lamb').prop('checked', true);
-	}
-	if(window.localStorage.getItem('ocd') == "1") {
-		$('#ocd').prop('checked', true);
 	}
 	toggleDark();
 }
