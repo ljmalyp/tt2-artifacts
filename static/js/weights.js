@@ -2,34 +2,34 @@ function adjustWeights() {
 	gtag('event', 'Dark Mode', {
 		'event_category': 'Dark Mode',
 		'event_action': 'Setting',
-		'event_label': ($('#dark').prop('checked') ? 'Dark' : 'Light' ),
+		'event_label': ($('#dark').prop('checked') ? 'Dark' : 'Light' )
 	});
 	if($('#build').val()) {
 		gtag('event', 'Build', {
 			'event_category': 'Build',
 			'event_action': 'Value',
-			'event_label': $('#build').val(),
+			'event_label': $('#build').val()
 		});
 	}
 	if($('#hero').val()) {
 		gtag('event', 'Hero', {
 			'event_category': 'Hero',
 			'event_action': 'Set',
-			'event_label': $('#hero').val(),
+			'event_label': $('#hero').val()
 		});
 	}
-	if($('#chest').val()) {
-		gtag('event', 'Equipment', {
-			'event_category': 'Equipment',
-			'event_action': 'Chest',
-			'event_label': $('#chest').val(),
+	if($('#gold').val()) {
+		gtag('event', 'Gold', {
+			'event_category': 'Gold',
+			'event_action': 'Set',
+			'event_label': $('#gold').val()
 		});
 	}
 	if($('#active').val()) {
 		gtag('event', 'Active', {
 			'event_category': 'Active',
 			'event_action': 'Set',
-			'event_label': $('#active').val(),
+			'event_label': $('#active').val()
 		});
 	}
 	$.each(origWeights, function(k,v) {
@@ -402,16 +402,49 @@ function adjustWeights() {
 		case 'online':
 			artifacts.data.zc.color = 'danger';
 			artifacts.data.af.color = 'danger';
+			artifacts.data.dc.rating += .41;
+			artifacts.data.dc.color = 'warning';
+			break;
+	}
+	switch($('#gold').val()) {
+		case 'all';
 			artifacts.data.coc.rating += .41;
 			artifacts.data.coc.color = 'warning';
 			artifacts.data.eof.rating += .41;
 			artifacts.data.eof.color = 'warning';
-			artifacts.data.dc.rating += .41;
-			artifacts.data.dc.color = 'warning';
 			artifacts.data.is.rating += .5;
-			artifacts.data.is.color = 'info';
+			artifacts.data.is.color = 'warning';
 			artifacts.data.gfa.rating += .41;
 			artifacts.data.gfa.color = 'warning';
+			artifacts.data.hs.rating += .41;
+			artifacts.data.hs.color = 'warning';
+			artifacts.data.sov.rating += .21;
+			artifacts.data.sov.color = 'warning';
+			break;
+		case 'coc':
+			artifacts.data.coc.rating += .41;
+			artifacts.data.coc.color = 'warning';
+			artifacts.data.eof.rating += .41;
+			artifacts.data.eof.color = 'warning';
+			break;
+		case 'fairy':
+			artifacts.data.is.rating += .5;
+			artifacts.data.is.color = 'warning';
+			artifacts.data.gfa.rating += .41;
+			artifacts.data.gfa.color = 'warning';
+			break;
+		case 'boss':
+			artifacts.data.gfa.rating += .41;
+			artifacts.data.gfa.color = 'warning';
+			break;
+		case 'sov':
+			artifacts.data.sov.rating += .62;
+			artifacts.data.sov.color = 'warning';
+			alert('What are you doing.')
+			alert('What.')
+			alert('What.')
+			alert('What are you doing.')
+			alert('Look at your life. Look at your choices.')
 			break;
 	}
 	var i = 40;
