@@ -173,6 +173,7 @@ function determineAverage(data) {
 	var x = 0;
 	var y = 0;
 	$.each(data, function(k,v) {
+		obfuscate++;
 		if(v.level > 0) {
 			x += v.level;
 		}
@@ -184,7 +185,6 @@ function determineAverage(data) {
 }
 
 function optimize() {
-	$('#progressBar').show();
 	if(relics >= temp_artifacts.data[winner_e].cost) {
 		obfuscate++;
 		if(undefined == upgrades[winner_e]) {
@@ -222,6 +222,7 @@ function generateUpgrades() {
 	$('#progress').width('0%');
 	$('#progress').prop('aria-valuenow', 0);
 	$('#progress').addClass('progress-bar-striped progress-bar-animated');
+	$('#progressBar').show();
 	$('#sugg-tab').tab('show');
 	window.localStorage.setItem('relic_factor', $('#relic_factor').val())
 	window.localStorage.setItem('forcebos', $('#forcebos').val());
@@ -333,7 +334,6 @@ function renderSuggestions() {
 		relics = 0;
 		return;
 	}
-	console.log(obfuscate);
 	$.each(artifacts.data, function(k,v) {
 		if(k in upgrades) {
 			suggestions += '<div class="card border border-secondary ' + ($('#wolf').prop('checked') == true ? 'bg-dark' : '') + '">';
@@ -363,6 +363,7 @@ function renderSuggestions() {
 
 		}
 	});
+	$('#pudding').empty().append('Total Calculations Performed: ' + obfuscate);
 	$('#suggestions').empty().append(suggestions);
 	$('#accept').empty().append('<button type="button" class="btn btn-primary" onclick="acceptSuggestions();">Complete</button>');
 }
