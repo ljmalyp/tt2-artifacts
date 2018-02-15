@@ -164,29 +164,18 @@
 								<option value="e21">e21/ac</option>
 							</select>
 						</div>
-						<!--
-						<div class="form-row col-9 mb-4">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<div class="input-group-text">Force up to</div>
-								</div>
-								<input id="forcebos" type="tel" value="0">
-								<select id="bos_type">
-									<option value="level">levels</option>
-									<option value="pct">% of relics</option>
-								</select>
-								<div class="input-group-append">
-									<div class="input-group-text">of BoS</div>
-								</div>
-							-->
 					</form>
 					<form class="mb-4">
-						<div class="form-check">
-							<input type="checkbox" class="form-check-input" id="ocd" onchange="ocdOCD();">
-							<label class="form-check-label" for="ocd">Enable &#x30BB;&#x30A4;&#x30A4;&#x30C1; Mode a.k.a. Force Crazy OCD Inefficient Rounding Down to even 100s<!--<br>
-							(Note, this will even ignore any forced BOS requests above.)--></label>
+						<div class="input-group col-12 col-md-6 col-xl-4">
+							<span class="input-group-text">Round to the Nearest</span>
+							<select id="ocd">
+								<option value="1">N/A</option>
+								<option value="10">10</option>
+								<option value="100">100</option>
+								<option value="1000">1000</option>
+							</select>
 						</div>
-					</form>
+				  	</form>
 					<button type="button" class="btn btn-primary mb-4" onclick="generateUpgrades()">Generate Upgrades</button>
 				</div>
 			  <div class="tab-pane fade" id="sugg" role="tabpanel" aria-labelledby="sugg-tab">
