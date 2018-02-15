@@ -82,10 +82,9 @@ function generateArtifacts() {
 	window.localStorage.setItem('artifacts', JSON.stringify(artifacts));
 	window.localStorage.setItem('build', $('#build').val());
 	window.localStorage.setItem('hero', $('#hero').val());
+	window.localStorage.setItem('gold', $('#gold').val());
 	window.localStorage.setItem('active', $('#active').val());
 	window.localStorage.setItem('relic_factor', $('#relic_factor').val());
-	window.localStorage.setItem('forcebos', $('#forcebos').val());
-	window.localStorage.setItem('bos_type', $('#bos_type').val());
 	window.localStorage.setItem('ocd', $('#ocd').val());
 	adjustWeights();
 }
@@ -147,10 +146,9 @@ function regenerateArtifacts() {
 	window.localStorage.setItem('artifacts', JSON.stringify(artifacts));
 	window.localStorage.setItem('build', $('#build').val());
 	window.localStorage.setItem('hero', $('#hero').val());
+	window.localStorage.setItem('gold', $('#gold').val());
 	window.localStorage.setItem('active', $('#active').val());
 	window.localStorage.setItem('relic_factor', $('#relic_factor').val());
-	window.localStorage.setItem('forcebos', $('#forcebos').val());
-	window.localStorage.setItem('bos_type', $('#bos_type').val());
 	window.localStorage.setItem('ocd', $('#ocd').val());
 }
 
@@ -227,8 +225,6 @@ function generateUpgrades() {
 	$('#progressBar').show();
 	$('#sugg-tab').tab('show');
 	window.localStorage.setItem('relic_factor', $('#relic_factor').val())
-	window.localStorage.setItem('forcebos', $('#forcebos').val());
-	window.localStorage.setItem('bos_type', $('#bos_type').val());
 	window.localStorage.setItem('ocd', $('#ocd').val());
 	if(winner_n != '' || 1 > artifacts.data.bos.level) {
 		$('#new_artifact').empty().append('<em>NOTE: You would be better off saving up for a new artifact.</em>');
@@ -637,10 +633,9 @@ if (storageAvailable('localStorage')) {
 	artifacts.totalAD = calculateTotalAD(artifacts.data);
 	$('#build').val(window.localStorage.getItem('build'));
 	$('#hero').val(window.localStorage.getItem('hero'));
+	$('#gold').val(window.localStorage.getItem('gold'));
 	$('#active').val(window.localStorage.getItem('active'));
 	$('#relic_factor').val(window.localStorage.getItem('relic_factor'));
-	$('#forcebos').val(window.localStorage.getItem('forcebos'));
-	$('#bos_type').val(window.localStorage.getItem('bos_type'));
 	$('#ocd').val(window.localStorage.getItem('ocd'));
 	if(window.localStorage.getItem('dark') == "1") {
 		$('#wolf').prop('checked', true);
