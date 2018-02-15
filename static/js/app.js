@@ -276,23 +276,23 @@ function generateUpgrades() {
 			break;
 		case 'e17':
 			relics = relics.mul(100000000000000000).toNumber();
-			buffer = 5000;
+			buffer = 2500;
 			break;
 		case 'e18':
 			relics = relics.mul(1000000000000000000).toNumber();
-			buffer = 10000;
+			buffer = 2500;
 			break;
 		case 'e19':
 			relics = relics.mul(10000000000000000000).toNumber();
-			buffer = 15000;
+			buffer = 2500;
 			break;
 		case 'e20':
 			relics = relics.mul(100000000000000000000).toNumber();
-			buffer = 25000;
+			buffer = 2500;
 			break;
 		case 'e21':
 			relics = relics.mul(1000000000000000000000).toNumber();
-			buffer = 50000;
+			buffer = 2500;
 			break;
 	}
 	orelics = relics;
