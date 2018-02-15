@@ -407,7 +407,7 @@ function adjustWeights() {
 			break;
 	}
 	switch($('#gold').val()) {
-		case 'all';
+		case 'all':
 			artifacts.data.coc.rating += .41;
 			artifacts.data.coc.color = 'warning';
 			artifacts.data.eof.rating += .41;
