@@ -339,7 +339,7 @@ function renderSuggestions() {
 					suggestions += '<span>';
 						suggestions += '<span class="d-inline d-sm-none">' + v.nickname + '</span>';
 						suggestions += '<span class="d-none d-sm-inline">' + v.name + '</span>';
-						suggestions += ' <small>' + v.level + '&#x00A0;=>&#x00A0;' + temp_artifacts.data[k].level + '</small>';
+						suggestions += ' <small>' + displayTruncated(v.level) + '&#x00A0;=>&#x00A0;' + displayTruncated(temp_artifacts.data[k].level) + '</small>';
 						suggestions += '<span class="badge badge-' + v.color + ' ml-3">+' + upgrades[k] + '</span>';
 					suggestions += '</span>';
 					suggestions += '<button class="badge badge-secondary" type="button" data-toggle="collapse" data-target="#' + k + 'deets" aria-expanded="false" aria-controls="' + k + 'deets">&#x00A0;i&#x00A0;</button>';
