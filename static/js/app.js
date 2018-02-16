@@ -666,9 +666,9 @@ function exportData() {
 	$.each(artifacts.data,function(k,v) {
 		ex += k + '_';
 		ex += v.active + '_';
-		ex += v.level + ', ';
+		ex += v.level + '|';
 	});
-	ex = ex.slice(0, -2);
+	ex = ex.slice(0, -1);
 	$('#export').empty().text(ex);
 	$('#export_wrap').show();
 }
@@ -689,7 +689,7 @@ function importData() {
 	$('#relic_factor').val(im[4]);
 	$('#ocd').val(im[5]);
 	$('#dark').val(im[6]);
-	var ima = im[7].split(', ');
+	var ima = im[7].split('|');
 	$.each(ima, function(k,v) {
 		var imaa = v.split('_');
 		artifacts.data[imaa[0]].active = parseInt(imaa[1]);
