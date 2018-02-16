@@ -523,46 +523,46 @@ function displayPct(value) {
 
 function displayTruncated(value) {
 	if(value > 999999999999999999999) {
-		value = (value / 1000000000000000000000).toFixed(3).replace(/\.?0+$/, '');
+		value = (value / 1000000000000000000000).toFixed(2).replace(/\.?0+$/, '');
 		value += 'e21/ac';
 	} else if(value > 99999999999999999999) {
-		value = (value / 100000000000000000000).toFixed(3).replace(/\.?0+$/, '');
+		value = (value / 100000000000000000000).toFixed(2).replace(/\.?0+$/, '');
 		value += 'e20';
 	} else if(value > 9999999999999999999) {
-		value = (value / 10000000000000000000).toFixed(3).replace(/\.?0+$/, '');
+		value = (value / 10000000000000000000).toFixed(2).replace(/\.?0+$/, '');
 		value += 'e19';
 	} else if(value > 999999999999999999) {
-		value = (value / 1000000000000000000).toFixed(3).replace(/\.?0+$/, '');
+		value = (value / 1000000000000000000).toFixed(2).replace(/\.?0+$/, '');
 		value += 'e18/ab';
 	} else if(value > 99999999999999999) {
-		value = (value / 100000000000000000).toFixed(3).replace(/\.?0+$/, '');
+		value = (value / 100000000000000000).toFixed(2).replace(/\.?0+$/, '');
 		value += 'e17';
 	} else if(value > 9999999999999999) {
-		value = (value / 10000000000000000).toFixed(3).replace(/\.?0+$/, '');
+		value = (value / 10000000000000000).toFixed(2).replace(/\.?0+$/, '');
 		value += 'e16';
 	} else if(value > 999999999999999) {
-		value = (value / 1000000000000000).toFixed(3).replace(/\.?0+$/, '');
+		value = (value / 1000000000000000).toFixed(2).replace(/\.?0+$/, '');
 		value += 'e15/aa';
 	} else if(value > 99999999999999) {
-		value = (value / 100000000000000).toFixed(3).replace(/\.?0+$/, '');
+		value = (value / 100000000000000).toFixed(2).replace(/\.?0+$/, '');
 		value += 'e14';
 	} else if(value > 9999999999999) {
-		value = (value / 10000000000000).toFixed(3).replace(/\.?0+$/, '');
+		value = (value / 10000000000000).toFixed(2).replace(/\.?0+$/, '');
 		value += 'e13';
 	} else if(value > 999999999999) {
-		value = (value / 1000000000000).toFixed(3).replace(/\.?0+$/, '');
+		value = (value / 1000000000000).toFixed(2).replace(/\.?0+$/, '');
 		value += 'T';
 	} else if(value > 999999999) {
-		value = (value / 1000000000).toFixed(3).replace(/\.?0+$/, '');
+		value = (value / 1000000000).toFixed(2).replace(/\.?0+$/, '');
 		value += 'B';
 	} else if(value > 999999) {
-		value = (value / 1000000).toFixed(3).replace(/\.?0+$/, '');
+		value = (value / 1000000).toFixed(2).replace(/\.?0+$/, '');
 		value += 'M';
 	} else if(value > 999) {
-		value = (value / 1000).toFixed(3).replace(/\.?0+$/, '');
+		value = (value / 1000).toFixed(2).replace(/\.?0+$/, '');
 		value += 'K';
 	} else {
-		value = (value * 1).toFixed(3).replace(/\.?0+$/, '');
+		value = (value * 1).toFixed(2).replace(/\.?0+$/, '');
 	}
 	return(value);
 }
