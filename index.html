@@ -185,9 +185,22 @@
 								<option value="1000">1000</option>
 							</select>
 						</div>
-				  	</form>
+			  	</form>
 					<button type="button" class="btn btn-primary mb-4" onclick="generateUpgrades()">Generate Upgrades</button>
-				</div>
+          <button type="button" class="btn btn-secondary mb-4" onclick="exportData()">Export Data</button>
+          <button type="button" class="btn btn-secondary mb-4" onclick="startImport()">Import Data</button>
+          <div id="export_wrap">
+            <div class="mb-2">Copy and paste the following exported data into another instance of the optimizer.</div>
+            <code id="export"></code>
+          </div>
+          <div id="import_wrap">
+            <div class="mb-2">Paste in the exported data you got from another instance of the optimizer. NOTE: THERE IS NO UNDOING THIS.</div>
+            <div class="form-group col-12">
+                <textarea class="form-control mb-2" id="import" rows="10"></textarea>
+                <button type="button" class="btn btn-info mb-4" onclick="importData()">Start Import</button>
+            </div>
+          </div>
+        </div>
 			  <div class="tab-pane fade" id="sugg" role="tabpanel" aria-labelledby="sugg-tab">
 					<p>If you purchase all these upgrades, hit the Complete button to update the Artifact Status table and clear the results.</p>
 					<p><small><em>Note: the first time you make a big jump in factor (e.g., e13 => e15) it can run a little slowly, but with each subsequent run at a given factor it will run faster and faster because the gap in your artifact levels will be greatly reduced. I'm continuing to look into ways to optimize this further.</em></small></p>

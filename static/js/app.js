@@ -18,12 +18,11 @@ function toggleDark() {
 		$('table').addClass('table-dark');
 		$('#btnwolf').removeClass('btn-dark').addClass('btn-danger');
 		$('#btnlamb').removeClass('btn-info').addClass('btn-light');
-		window.localStorage.setItem('dark', 1);
 	} else {
 		$('#btnwolf').removeClass('btn-danger').addClass('btn-dark');
 		$('#btnlamb').removeClass('btn-light').addClass('btn-info');
-		window.localStorage.setItem('dark', 0);
 	}
+	storeData();
 }
 
 function generateArtifacts() {
@@ -79,13 +78,7 @@ function generateArtifacts() {
 		row += '</tr>';
 		$('#artifacts').append(row);
 	});
-	window.localStorage.setItem('artifacts', JSON.stringify(artifacts));
-	window.localStorage.setItem('build', $('#build').val());
-	window.localStorage.setItem('hero', $('#hero').val());
-	window.localStorage.setItem('gold', $('#gold').val());
-	window.localStorage.setItem('active', $('#active').val());
-	window.localStorage.setItem('relic_factor', $('#relic_factor').val());
-	window.localStorage.setItem('ocd', $('#ocd').val());
+	storeData();
 	adjustWeights();
 }
 
@@ -143,13 +136,7 @@ function regenerateArtifacts() {
 		$('#' + k + 'expo').empty().append(value);
 		$('#' + k + 'expo').removeClass().addClass('badge').addClass('badge-' + v.color);
 	});
-	window.localStorage.setItem('artifacts', JSON.stringify(artifacts));
-	window.localStorage.setItem('build', $('#build').val());
-	window.localStorage.setItem('hero', $('#hero').val());
-	window.localStorage.setItem('gold', $('#gold').val());
-	window.localStorage.setItem('active', $('#active').val());
-	window.localStorage.setItem('relic_factor', $('#relic_factor').val());
-	window.localStorage.setItem('ocd', $('#ocd').val());
+	storeData();
 }
 
 function updateArtifact(k) {
@@ -214,6 +201,8 @@ function optimize() {
 function generateUpgrades() {
 	obfuscate = 0;
 	white_rabbit = new Date();
+	$('#export_wrap').hide();
+	$('#import_wrap').hide();
 	$('#new_artifact').empty();
 	$('#pudding').empty();
 	$('#accept').empty();
@@ -224,8 +213,7 @@ function generateUpgrades() {
 	$('#progress').addClass('progress-bar-striped progress-bar-animated');
 	$('#progressBar').show();
 	$('#sugg-tab').tab('show');
-	window.localStorage.setItem('relic_factor', $('#relic_factor').val())
-	window.localStorage.setItem('ocd', $('#ocd').val());
+	storeData();
 	if(winner_n != '' || 1 > artifacts.data.bos.level) {
 		$('#new_artifact').empty().append('<em>NOTE: You would be better off saving up for a new artifact.</em>');
 	}
@@ -647,11 +635,73 @@ if (storageAvailable('localStorage')) {
 	toggleDark();
 }
 
+function storeData() {
+	window.localStorage.setItem('artifacts', JSON.stringify(artifacts));
+	window.localStorage.setItem('build', $('#build').val());
+	window.localStorage.setItem('hero', $('#hero').val());
+	window.localStorage.setItem('gold', $('#gold').val());
+	window.localStorage.setItem('active', $('#active').val());
+	window.localStorage.setItem('relic_factor', $('#relic_factor').val());
+	window.localStorage.setItem('ocd', $('#ocd').val());
+	window.localStorage.setItem('dark', ($('#wolf').prop('checked') == true ? 1 : 0));
+}
+
 $('input[type="tel"]').on('focus', function(){
   $(this).data('fontSize', $(this).css('font-size')).css('font-size', '16px');
 }).on('blur', function(){
   $(this).css('font-size', $(this).data('fontSize'));
 });
 
+function exportData() {
+	$('#export_wrap').hide();
+	$('#import_wrap').hide();
+	var ex = '';
+	ex += $('#build').val() + '=';
+	ex += $('#hero').val() + '=';
+	ex += $('#gold').val() + '=';
+	ex += $('#active').val() + '=';
+	ex += $('#relic_factor').val() + '=';
+	ex += $('#ocd').val() + '=';
+	ex += window.localStorage.getItem('dark') + '=';
+	$.each(artifacts.data,function(k,v) {
+		ex += k + '_';
+		ex += v.active + '_';
+		ex += v.level + ', ';
+	});
+	ex = ex.slice(0, -2);
+	$('#export').empty().text(ex);
+	$('#export_wrap').show();
+}
+
+function startImport() {
+	$('#export_wrap').hide();
+	$('#import_wrap').hide();
+	$('#import').empty();
+	$('#import_wrap').show();
+}
+
+function importData() {
+	var im = ($('#import').val().trim().split('='));
+	$('#build').val(im[0]);
+	$('#hero').val(im[1]);
+	$('#gold').val(im[2]);
+	$('#active').val(im[3]);
+	$('#relic_factor').val(im[4]);
+	$('#ocd').val(im[5]);
+	$('#dark').val(im[6]);
+	var ima = im[7].split(', ');
+	$.each(ima, function(k,v) {
+		var imaa = v.split('_');
+		artifacts.data[imaa[0]].active = parseInt(imaa[1]);
+		artifacts.data[imaa[0]].level = parseInt(imaa[2]);
+	});
+	$('#export_wrap').hide();
+	$('#import_wrap').hide();
+	storeData();
+//	adjustWeights();
+}
+
+$('#export_wrap').hide();
+$('#import_wrap').hide();
 var origWeights = jQuery.extend(true, {}, artifacts.data);
 generateArtifacts();
