@@ -78,7 +78,7 @@ function generateArtifacts() {
 			row += '</td>';
 		row += '</tr>';
 		$('#artifacts').append(row);
-    var div = '<div class="col-3 col-md-2 col-xl-1 mb-2 text-center">';
+    var div = '<div class="col-3 col-md-2 col-xl-1 border text-center">';
     div += '<strong>' + v.nickname + '</strong><br><span id="' + k + 'dalt">' + displayTruncated(v.level) + '</span>';
     div += '</div>'
 		$('#daltifacts').append(div);
