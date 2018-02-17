@@ -27,6 +27,7 @@ function toggleDark() {
 
 function generateArtifacts() {
 	$('#artifacts').empty();
+	$('#daltifacts').empty();
 	$.each(artifacts.data, function(k,v) {
 		if(isNaN(v.level)) {
 			v.level = 0;
@@ -77,6 +78,10 @@ function generateArtifacts() {
 			row += '</td>';
 		row += '</tr>';
 		$('#artifacts').append(row);
+    var div = '<div class="col-4 col-md-3 col-lg-2 col-xl-1">';
+    div += v.nickname + ': <span id="' + k + 'dalt">' + displayTruncated(v.level) + '</span>';
+    div += '</div>'
+		$('#daltifacts').append(div);
 	});
 	storeData();
 	adjustWeights();
@@ -105,12 +110,17 @@ function checkAll() {
 	artifacts = calculateAll(artifacts, true);
 }
 
+function dalView() {
+  $('#dal-tab').tab('show');
+}
+
 function regenerateArtifacts() {
 	$.each(artifacts.data, function(k,v) {
 		if(isNaN(v.level)) {
 			v.level = 0;
 		}
 		$('#' + k).val(v.level);
+		$('#' + k + 'dalt').text(displayTruncated(v.level));
 		var value = '';
 		if('' != v.current_effect) {
 			value = displayEffect(v.current_effect, v.type);
