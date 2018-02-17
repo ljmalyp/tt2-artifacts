@@ -78,8 +78,8 @@ function generateArtifacts() {
 			row += '</td>';
 		row += '</tr>';
 		$('#artifacts').append(row);
-    var div = '<div class="col-4 col-md-3 col-lg-2 mb-2">';
-    div += v.nickname + ': <span id="' + k + 'dalt">' + displayTruncated(v.level) + '</span>';
+    var div = '<div class="col-3 col-md-2 col-xl-1 mb-1">';
+    div += '<em>' + v.nickname + '</em><br><span id="' + k + 'dalt">' + displayTruncated(v.level) + '</span>';
     div += '</div>'
 		$('#daltifacts').append(div);
 	});
