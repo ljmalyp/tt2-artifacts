@@ -110,8 +110,12 @@ function checkAll() {
 	artifacts = calculateAll(artifacts, true);
 }
 
-function dalView() {
-  $('#dal-tab').tab('show');
+function dalView(litmus) {
+  if(litmus) {
+    $('#dal-tab').tab('show');
+  } else {
+    $('#reccs-tab').tab('show');
+  }
 }
 
 function regenerateArtifacts() {

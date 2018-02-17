@@ -127,7 +127,7 @@
 					<p>Fill out the current level of your artifacts. If you want to ignore an artifact uncheck it. If you don't have it yet, set it to 0 and I'll attempt to prompt you when you should save up and roll the dice on a new artifact.</p>
 					<p>AD Sanity Check: <span id="adsanity">0%</span></p>
 					<button type="button" class="btn btn-primary mb-3" onclick="checkAll();">Check All Artifacts</button>
-					<button type="button" class="btn btn-secondary mb-3" onclick="dalView();">DAL Mode (a.k.a. Selfie)</button>
+					<button type="button" class="btn btn-secondary mb-3" onclick="dalView(1);">DAL Mode (a.k.a. Selfie)</button>
 					<div class="col-12 col-md-8 col-lg-6">
 						<div class="row mb-2 ml-2">
 							Legend:
@@ -155,6 +155,7 @@
 			  <div class="tab-pane fade" id="dal" role="tabpanel" aria-labelledby="dal-tab">
           <div class="row" id="daltifacts">
           </div>
+					<button type="button" class="btn btn-secondary mb-3" onclick="dalView(0);">Exit DAL Mode</button>
 				</div>
 			  <div class="tab-pane fade show active" id="reccs" role="tabpanel" aria-labelledby="reccs-tab">
 					<p>Enter the total number of relics you're willing to spend to receive an upgrade list below. (Whole numbers on the left, decimals on the right.)</p>
