@@ -449,7 +449,7 @@ function adjustWeights() {
 	}
 	var i = 40;
 	$.each(artifacts.data, function(k,v) {
-		if(v.sort <= i && k != 'bos' && v.active = 1) {
+		if(v.sort <= i && k != 'bos' && v.active == 1) {
 			artifacts.data.bos.rating += v.rating;
 		}
 	});
