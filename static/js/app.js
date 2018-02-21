@@ -89,12 +89,14 @@ function generateArtifacts() {
 
 function adjustBoS() {
 	var i = 40;
+	var expo = 0
 	$.each(artifacts.data, function(k,v) {
 		console.log(k,v,v.active == 1);
 		if(v.sort <= i && k != 'bos' && v.active == 1) {
-			artifacts.data.bos.rating += v.rating;
+			expo += v.rating;
 		}
 	});
+	artifacts.data.bos.rating = expo;
 	artifacts = calculate(artifacts, 'bos', true, true);
 }
 
