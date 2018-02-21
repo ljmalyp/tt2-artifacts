@@ -91,7 +91,6 @@ function adjustBoS() {
 	var i = 40;
 	var expo = 0
 	$.each(artifacts.data, function(k,v) {
-		console.log(k,v,v.active == 1);
 		if(v.sort <= i && k != 'bos' && v.active == 1) {
 			expo += v.rating;
 		}
