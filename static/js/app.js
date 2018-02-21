@@ -87,6 +87,17 @@ function generateArtifacts() {
 	adjustWeights();
 }
 
+function adjustBoS() {
+	var i = 40;
+	$.each(artifacts.data, function(k,v) {
+		console.log(k,v);
+		if(v.sort <= i && k != 'bos' && v.active == 1) {
+			artifacts.data.bos.rating += v.rating;
+		}
+	});
+}
+
+
 function updateActive(k) {
 	if($('#' + k + 'active').is(':checked')) {
 		artifacts.data[k].active = 1;
@@ -97,6 +108,7 @@ function updateActive(k) {
 		$('#' + k + 'row').addClass('text-dark bg-secondary');
 		$('#' + k).prop('readonly', true);
 	}
+	adjustBoS();
 	artifacts = calculate(artifacts, k, true, true);
 }
 
