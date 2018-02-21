@@ -139,30 +139,29 @@ function regenerateArtifacts() {
 		$('#' + k).val(v.level);
 		$('#' + k + 'dalt').text(displayTruncated(v.level));
 		var value = '';
-		if(v.active && '' != v.current_effect) {
+		if(1 == v.active && undefined != v.current_effect) {
 			value = displayEffect(v.current_effect, v.type);
 		}
 		value += v.bonus
 		$('#' + k + 'effect').empty().append(value);
 		value = '';
-		if(v.active && '' != v.current_ad) {
+		if(1 == v.active && undefined != v.current_ad) {
 			value = displayPct(v.current_ad);
 		}
-		$('#' + k + 'ad').empty().append(value);
+		$(1 == '#' + k + 'ad').empty().append(value);
 		value = '';
-		if(v.active && '' != v.displayCost) {
+		if(1 == v.active && undefined != v.displayCost) {
 			value = v.displayCost + ' Relics';
 		}
 		$('#' + k + 'cost').empty().append(value);
 		value = '';
-		if(v.active && -1 != v.efficiency) {
+		if1 == v.active && undefined != v.efficiency) {
 			console.log(k,v);
 			value = v.efficiency.toExponential(12);
 		}
 		$('#' + k + 'eff').empty().append(value);
 		value = v.rating.toFixed(2).replace(/\.?0+$/, '');
-		$('#' + k + 'expo').empty().append(value);
-		$('#' + k + 'expo').removeClass().addClass('badge').addClass('badge-' + v.color);
+		$('#' + k + 'expo').empty().append(value).removeClass().addClass('badge').addClass('badge-' + v.color);
 	});
 	storeData();
 }
