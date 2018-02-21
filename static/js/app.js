@@ -155,7 +155,7 @@ function regenerateArtifacts() {
 		}
 		$('#' + k + 'cost').empty().append(value);
 		value = '';
-		if1 == v.active && undefined != v.efficiency) {
+		if(1 == v.active && undefined != v.efficiency) {
 			console.log(k,v);
 			value = v.efficiency.toExponential(12);
 		}
