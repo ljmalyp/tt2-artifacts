@@ -447,11 +447,6 @@ function adjustWeights() {
 			alert('Look at your life. Look at your choices.')
 			break;
 	}
-	var i = 40;
-	$.each(artifacts.data, function(k,v) {
-		if(v.sort <= i && k != 'bos' && v.active == 1) {
-			artifacts.data.bos.rating += v.rating;
-		}
-	});
+	adjustBos();
 	artifacts = calculateAll(artifacts, true);
 }
