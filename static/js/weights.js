@@ -447,6 +447,6 @@ function adjustWeights() {
 			alert('Look at your life. Look at your choices.')
 			break;
 	}
-	adjustBos();
+	adjustBoS();
 	artifacts = calculateAll(artifacts, true);
 }
