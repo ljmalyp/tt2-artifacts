@@ -139,23 +139,23 @@ function regenerateArtifacts() {
 		$('#' + k).val(v.level);
 		$('#' + k + 'dalt').text(displayTruncated(v.level));
 		var value = '';
-		if('' != v.current_effect) {
+		if(v.active && '' != v.current_effect) {
 			value = displayEffect(v.current_effect, v.type);
 		}
 		value += v.bonus
 		$('#' + k + 'effect').empty().append(value);
 		value = '';
-		if('' != v.current_ad) {
+		if(v.active && '' != v.current_ad) {
 			value = displayPct(v.current_ad);
 		}
 		$('#' + k + 'ad').empty().append(value);
 		value = '';
-		if('' != v.displayCost) {
+		if(v.active && '' != v.displayCost) {
 			value = v.displayCost + ' Relics';
 		}
 		$('#' + k + 'cost').empty().append(value);
 		value = '';
-		if(-1 != v.efficiency) {
+		if(v.active && -1 != v.efficiency) {
 			console.log(k,v);
 			value = v.efficiency.toExponential(12);
 		}
