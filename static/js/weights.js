@@ -39,10 +39,7 @@ function adjustWeights() {
 	var hreduct = 0;
 	switch($('#build').val()) {
 		case 'hero':
-			artifacts.data.foe.rating += .25;
 			artifacts.data.hb.rating += 1;
-			artifacts.data.ie.rating += .5;
-			artifacts.data.orc.rating += .5;
 			artifacts.data.sor.rating += 1;
 			artifacts.data.hos2.rating += 6;
 			artifacts.data.ig.rating += 1.82;
@@ -51,6 +48,9 @@ function adjustWeights() {
 			artifacts.data.tac.rating += 1;
 			artifacts.data.hom.rating += 1;
 			artifacts.data.roc.rating += 2.82;
+			artifacts.data.orc.color = 'danger';
+			artifacts.data.foe.color = 'danger';
+			artifacts.data.ie.color = 'danger';
 			artifacts.data.dh.color = 'danger';
 			artifacts.data.tms.color = 'danger';
 			artifacts.data.ss.color = 'danger';
@@ -75,17 +75,13 @@ function adjustWeights() {
 			hreduct = 1;
 			break;
 		case 'tap':
-			artifacts.data.foe.rating += .5;
-			artifacts.data.orc.rating += .5;
 			artifacts.data.dh.rating += 1;
-			artifacts.data.foe.rating += .5;
 			artifacts.data.tms.rating += 1;
 			artifacts.data.ss.rating += 1;
 			artifacts.data.tr.rating += 1;
 			artifacts.data.aom.rating += 1;
 			artifacts.data.hb.rating += .5;
 			artifacts.data.sor.rating += .5;
-			artifacts.data.ie.rating += .25;
 			artifacts.data.hos2.rating += 6;
 			artifacts.data.ig.rating += 3.32;
 			artifacts.data.rt.rating += 1;
@@ -99,6 +95,9 @@ function adjustWeights() {
 			artifacts.data.tac.rating += .5;
 			artifacts.data.hom.rating += 1;
 			artifacts.data.roc.rating += 2.82;
+			artifacts.data.orc.color = 'danger';
+			artifacts.data.foe.color = 'danger';
+			artifacts.data.ie.color = 'danger';
 			artifacts.data.dh.color = 'success';
 			artifacts.data.tms.color = 'success';
 			artifacts.data.ss.color = 'success';
@@ -126,8 +125,7 @@ function adjustWeights() {
 			artifacts.data.aom.rating += 1;
 			artifacts.data.hb.rating += .5;
 			artifacts.data.sor.rating += .5;
-			artifacts.data.ie.rating += .25;
-			artifacts.data.orc.rating += .5;
+			artifacts.data.orc.rating += 1;
 			artifacts.data.hos2.rating += 7;
 			artifacts.data.hos.rating += .5;
 			artifacts.data.ig.rating += 2.32;
@@ -140,6 +138,7 @@ function adjustWeights() {
 			artifacts.data.as.rating += 1;
 			artifacts.data.hom.rating += .5;
 			artifacts.data.roc.rating += 3.32;
+			artifacts.data.ie.color = 'danger';
 			artifacts.data.dh.color = 'success';
 			artifacts.data.tms.color = 'success';
 			artifacts.data.ss.color = 'danger';
@@ -163,7 +162,6 @@ function adjustWeights() {
 			hreduct = .5;
 			break;
 		case 'sc':
-			artifacts.data.foe.rating += .33;
 			artifacts.data.coe.rating += .41;
 			artifacts.data.dh.rating += .67;
 			artifacts.data.tms.rating += .67;
@@ -172,8 +170,7 @@ function adjustWeights() {
 			artifacts.data.aom.rating += 1;
 			artifacts.data.hb.rating += .67;
 			artifacts.data.sor.rating += .67;
-			artifacts.data.ie.rating += .33;
-			artifacts.data.orc.rating += .5;
+			artifacts.data.orc.rating += 1;
 			artifacts.data.hos2.rating += 7.02;
 			artifacts.data.hos.rating += .5;
 			artifacts.data.ig.rating += 3.49;
@@ -192,6 +189,8 @@ function adjustWeights() {
 			artifacts.data.as.rating += 1;
 			artifacts.data.hom.rating += .67;
 			artifacts.data.roc.rating += 3.49;
+			artifacts.data.foe.color = 'danger';
+			artifacts.data.ie.color = 'danger';
 			artifacts.data.tr.color = 'success';
 			artifacts.data.aom.color = 'success';
 			artifacts.data.orc.color = 'success';
@@ -205,7 +204,6 @@ function adjustWeights() {
 			hreduct = .67;
 			break;
 		case 'hs':
-			artifacts.data.foe.rating += .5;
 			artifacts.data.coe.rating += .41;
 			artifacts.data.dh.rating += 1;
 			artifacts.data.tms.rating += 1;
@@ -214,7 +212,6 @@ function adjustWeights() {
 			artifacts.data.aom.rating += 1;
 			artifacts.data.hb.rating += .5;
 			artifacts.data.sor.rating += .5;
-			artifacts.data.ie.rating += .25;
 			artifacts.data.hos2.rating += 7;
 			artifacts.data.hos.rating += .5;
 			artifacts.data.ig.rating += 3.99;
@@ -231,6 +228,9 @@ function adjustWeights() {
 			artifacts.data.tac.rating += .5;
 			artifacts.data.hom.rating += .67;
 			artifacts.data.roc.rating += 2.49;
+			artifacts.data.orc.color = 'danger';
+			artifacts.data.foe.color = 'danger';
+			artifacts.data.ie.color = 'danger';
 			artifacts.data.dh.color = 'success';
 			artifacts.data.tms.color = 'success';
 			artifacts.data.tr.color = 'success';
@@ -248,14 +248,13 @@ function adjustWeights() {
 			hreduct = .5;
 			break;
 		case 'cs':
-			artifacts.data.foe.rating += .25;
 			artifacts.data.coe.rating += .41;
 			artifacts.data.tr.rating += 1;
 			artifacts.data.aom.rating += 1;
 			artifacts.data.hb.rating += 1;
 			artifacts.data.sor.rating += 1;
 			artifacts.data.ie.rating += 1;
-			artifacts.data.orc.rating += .5;
+			artifacts.data.orc.rating += 1;
 			artifacts.data.hos2.rating += 7;
 			artifacts.data.hos.rating += .5;
 			artifacts.data.ig.rating += 2.32;
@@ -268,6 +267,7 @@ function adjustWeights() {
 			artifacts.data.as.rating += 1;
 			artifacts.data.hom.rating += 1;
 			artifacts.data.roc.rating += 3.82;
+			artifacts.data.foe.color = 'danger';
 			artifacts.data.dh.color = 'danger';
 			artifacts.data.tms.color = 'danger';
 			artifacts.data.ss.color = 'danger';
@@ -402,7 +402,7 @@ function adjustWeights() {
 		case 'online':
 			artifacts.data.zc.color = 'danger';
 			artifacts.data.af.color = 'danger';
-			artifacts.data.dc.rating += .41;
+			artifacts.data.dc.rating += .82;
 			artifacts.data.dc.color = 'warning';
 			break;
 	}
@@ -419,27 +419,41 @@ function adjustWeights() {
 			artifacts.data.hs.rating += .82;
 			artifacts.data.hs.color = 'warning';
 			artifacts.data.sov.rating += .21;
-			artifacts.data.sov.color = 'warning';
 			break;
 		case 'coc':
 			artifacts.data.coc.rating += .82;
 			artifacts.data.coc.color = 'warning';
 			artifacts.data.eof.rating += .82;
 			artifacts.data.eof.color = 'warning';
+			artifacts.data.sov.color = 'danger';
+			artifacts.data.gfa.color = 'danger';
+			artifacts.data.hs.color = 'danger';
 			break;
 		case 'fairy':
 			artifacts.data.is.rating += .5;
 			artifacts.data.is.color = 'warning';
 			artifacts.data.gfa.rating += .82;
 			artifacts.data.gfa.color = 'warning';
+			artifacts.data.sov.color = 'danger';
+			artifacts.data.coc.color = 'danger';
+			artifacts.data.eof.color = 'danger';
+			artifacts.data.hs.color = 'danger';
 			break;
 		case 'boss':
 			artifacts.data.hs.rating += .82;
 			artifacts.data.hs.color = 'warning';
+			artifacts.data.sov.color = 'danger';
+			artifacts.data.coc.color = 'danger';
+			artifacts.data.eof.color = 'danger';
+			artifacts.data.gfa.color = 'danger';
 			break;
 		case 'sov':
 			artifacts.data.sov.rating += .82;
 			artifacts.data.sov.color = 'warning';
+			artifacts.data.coc.color = 'danger';
+			artifacts.data.eof.color = 'danger';
+			artifacts.data.gfa.color = 'danger';
+			artifacts.data.hs.color = 'danger';
 			alert('What are you doing.')
 			alert('What.')
 			alert('What.')
