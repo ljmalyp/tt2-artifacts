@@ -408,37 +408,37 @@ function adjustWeights() {
 	}
 	switch($('#gold').val()) {
 		case 'all':
-			artifacts.data.coc.rating += .41;
+			artifacts.data.coc.rating += .82;
 			artifacts.data.coc.color = 'warning';
-			artifacts.data.eof.rating += .41;
+			artifacts.data.eof.rating += .82;
 			artifacts.data.eof.color = 'warning';
 			artifacts.data.is.rating += .5;
 			artifacts.data.is.color = 'warning';
-			artifacts.data.gfa.rating += .41;
+			artifacts.data.gfa.rating += .82;
 			artifacts.data.gfa.color = 'warning';
-			artifacts.data.hs.rating += .41;
+			artifacts.data.hs.rating += .82;
 			artifacts.data.hs.color = 'warning';
-			artifacts.data.sov.rating += .21;
+			artifacts.data.sov.rating += .41;
 			artifacts.data.sov.color = 'warning';
 			break;
 		case 'coc':
-			artifacts.data.coc.rating += .41;
+			artifacts.data.coc.rating += .82;
 			artifacts.data.coc.color = 'warning';
-			artifacts.data.eof.rating += .41;
+			artifacts.data.eof.rating += .82;
 			artifacts.data.eof.color = 'warning';
 			break;
 		case 'fairy':
 			artifacts.data.is.rating += .5;
 			artifacts.data.is.color = 'warning';
-			artifacts.data.gfa.rating += .41;
+			artifacts.data.gfa.rating += .82;
 			artifacts.data.gfa.color = 'warning';
 			break;
 		case 'boss':
-			artifacts.data.hs.rating += .41;
+			artifacts.data.hs.rating += .82;
 			artifacts.data.hs.color = 'warning';
 			break;
 		case 'sov':
-			artifacts.data.sov.rating += .62;
+			artifacts.data.sov.rating += .82;
 			artifacts.data.sov.color = 'warning';
 			alert('What are you doing.')
 			alert('What.')
