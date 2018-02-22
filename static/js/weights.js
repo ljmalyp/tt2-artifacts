@@ -418,7 +418,7 @@ function adjustWeights() {
 			artifacts.data.gfa.color = 'warning';
 			artifacts.data.hs.rating += .82;
 			artifacts.data.hs.color = 'warning';
-			artifacts.data.sov.rating += .41;
+			artifacts.data.sov.rating += .21;
 			artifacts.data.sov.color = 'warning';
 			break;
 		case 'coc':
