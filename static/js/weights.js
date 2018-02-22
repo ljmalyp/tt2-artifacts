@@ -398,6 +398,7 @@ function adjustWeights() {
 			artifacts.data.zc.color = 'warning';
 			artifacts.data.af.rating += 1;
 			artifacts.data.af.color = 'success';
+			artifacts.data.dc.color = 'danger';
 			break;
 		case 'online':
 			artifacts.data.zc.color = 'danger';
