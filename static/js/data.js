@@ -406,7 +406,7 @@ var artifacts = {
 			'name' : 'O\'Ryan\'s Charm',
 			'nickname' : 'oRC',
 			'bonus' : ' Companion Damage',
-			'rating' : 0.5,
+			'rating' : 0,
 			'ad' : .5,
 			'effect' : .1,
 			'max' : -1,
