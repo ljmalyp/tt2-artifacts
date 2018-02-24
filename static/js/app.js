@@ -16,13 +16,25 @@ function toggleDark() {
 		$('.card').addClass('bg-dark');
 		$('.nav-link').addClass('text-light');
 		$('table').addClass('table-dark');
-		$('#btnwolf').removeClass('btn-dark').addClass('btn-danger');
-		$('#btnlamb').removeClass('btn-info').addClass('btn-light');
+		$('#btnwolf').removeClass('btn-dark text-secondary').addClass('btn-danger');
+		$('#btnlamb').removeClass('btn-info').addClass('btn-light text-secondary');
 	} else {
-		$('#btnwolf').removeClass('btn-danger').addClass('btn-dark');
-		$('#btnlamb').removeClass('btn-light').addClass('btn-info');
+		$('#btnlamb').removeClass('btn-light text-secondary').addClass('btn-info');
+		$('#btnwolf').removeClass('btn-danger').addClass('btn-dark text-secondary');
 	}
 	storeData();
+}
+
+function toggleSplash() {
+	if($('#wet').prop('checked') == true) {
+		$('#btnwet').removeClass('btn-dark text-secondary').addClass('btn-info');
+		$('#btndry').removeClass('btn-info').addClass('btn-dark text-secondary');
+	} else {
+		$('#btndry').removeClass('btn-dark text-secondary').addClass('btn-info');
+		$('#btnwet').removeClass('btn-info').addClass('btn-dark text-secondary');
+	}
+	storeData();
+	adjustWeights();
 }
 
 function generateArtifacts() {
@@ -46,7 +58,7 @@ function generateArtifacts() {
 				row += '<input' + (1 == v.active ? '' : ' readonly="readonly"') + ' id="' + k + '" value="' + v.level + '" type="tel" class="form-control artlvl" placeholder="0" aria-label="Level of ' + v.name + '" aria-describedby="basic-addon' + k + '"onchange="updateArtifact(\'' + k + '\')">';
 			row += '</td>';
 			row += '<td>';
-				row += '<span class="badge badge-' + v.color + '" id="' + k + 'expo">' + v.rating.toFixed(2).replace(/\.?0+$/, '') + '</span>';
+				row += '<span class="badge" id="' + k + 'expo"></span>';
 			row += '</td>';
 			row += '<td>';
 				row += '<button class="badge badge-secondary" type="button" data-toggle="collapse" data-target="#' + k + 'info" aria-expanded="false" aria-controls="' + k + 'info" tabindex="-1">&#x00A0;i&#x00A0;</button>';
@@ -88,7 +100,7 @@ function generateArtifacts() {
 }
 
 function adjustBoS() {
-	var i = 40;
+	var i = artifacts.data.bos.expo.sum_sort;
 	var expo = 0
 	$.each(artifacts.data, function(k,v) {
 		if(v.sort <= i && k != 'bos' && v.active == 1) {
@@ -659,7 +671,15 @@ if (storageAvailable('localStorage')) {
 		$('#wolf').prop('checked', false);
 		$('#lamb').prop('checked', true);
 	}
+	if(window.localStorage.getItem('splash') == "1") {
+		$('#wet').prop('checked', true);
+		$('#dry').prop('checked', false);
+	} else {
+		$('#wet').prop('checked', false);
+		$('#dry').prop('checked', true);
+	}
 	toggleDark();
+	toggleSplash();
 }
 
 function storeData() {
@@ -671,6 +691,7 @@ function storeData() {
 	window.localStorage.setItem('relic_factor', $('#relic_factor').val());
 	window.localStorage.setItem('ocd', $('#ocd').val());
 	window.localStorage.setItem('dark', ($('#wolf').prop('checked') == true ? 1 : 0));
+	window.localStorage.setItem('splash', ($('#wet').prop('checked') == true ? 1 : 0));
 }
 
 $('input[type="tel"]').on('focus', function(){

@@ -109,7 +109,7 @@
 									<option value="offline">Offline</option>
 								</select>
 							</div>
-							<div class="form-check col-12 col-md-6 col-lg-4">
+              <div class="form-check col-12 col-md-6 col-lg-4">
 								<div class="mb-2">Choose a Theme</div>
 								<div class="btn-group btn-group-toggle" data-toggle="buttons">
 								  <label id="btnlamb" class="btn btn-info active">
@@ -120,6 +120,17 @@
 								  </label>
 								</div>
 							</div>
+							<div class="form-check col-12 col-md-6 col-lg-4">
+								<div class="mb-2">Boost Splash Damage?</div>
+								<div class="btn-group btn-group-toggle" data-toggle="buttons">
+								  <label id="btndry" class="btn btn-dark">
+								    <input type="radio" name="splash" id="dry" autocomplete="off" checked onchange="toggleSplash();"> No Thanks
+								  </label>
+								  <label id="btnwet" class="btn btn-info">
+								    <input type="radio" name="splash" id="wet" autocomplete="off" onchange="toggleSplash();"> Yes, Please!
+								  </label>
+								</div>
+							</div>
 						</div>
 					</form>
 				</div>
@@ -127,7 +138,7 @@
 					<p>Fill out the current level of your artifacts. If you want to ignore an artifact uncheck it. If you don't have it yet, set it to 0 and I'll attempt to prompt you when you should save up and roll the dice on a new artifact.</p>
 					<p>AD Sanity Check: <span id="adsanity">0%</span></p>
 					<button type="button" class="btn btn-primary mb-3" onclick="checkAll();">Check All Artifacts</button>
-					<button type="button" class="btn btn-secondary mb-3" onclick="dalView(1);">DAL Mode (a.k.a. Selfie)</button>
+					<button type="button" class="btn btn-secondary mb-3" onclick="dalView(1);">DAL Mode (a.k.a. Take a Selfie)</button>
 					<div class="col-12 col-md-8 col-lg-6">
 						<div class="row mb-2 ml-2">
 							Legend:
@@ -158,10 +169,8 @@
 					<button type="button" class="btn btn-secondary mb-3" onclick="dalView(0);">Exit DAL Mode</button>
 				</div>
 			  <div class="tab-pane fade show active" id="reccs" role="tabpanel" aria-labelledby="reccs-tab">
-					<p>Enter the total number of relics you're willing to spend to receive an upgrade list below. (Whole numbers on the left, decimals on the right.)</p>
-					<p><em>Note: if this is your first visit, you'll want to head to the first tab and work your way over entering your data first.</em></p>
+					<p>Enter the total number of relics you're willing to spend.</p>
 					<form class="mb-4">
-						<label>Relics to Spend</label>
 						<div class="input-group col-12 col-md-6 col-xl-4">
 							<input type="tel" id="relics" class="form-control" placeholder="0" aria-label="whole numbers for relics">
 							<span class="input-group-text px-1 rounded-0">.</span>
@@ -183,6 +192,7 @@
 								<option value="e21">e21/ac</option>
 							</select>
 						</div>
+            <label class="ml-4"><small>(Whole numbers on the left, decimals on the right.)</small></label>
 					</form>
 					<form class="mb-4">
 						<div class="input-group col-12 col-md-6 col-xl-4">
@@ -195,6 +205,7 @@
 							</select>
 						</div>
 			  	</form>
+          <p><small><em>Note: if this is your first visit, you'll want to head to the first tab and work your way over entering your data first.</em></small></p>
 					<button type="button" class="btn btn-primary mb-4" onclick="generateUpgrades()">Generate Upgrades</button>
           <button type="button" class="btn btn-secondary mb-4" onclick="exportData()">Export</button>
           <button type="button" class="btn btn-secondary mb-4" onclick="startImport()">Import</button>

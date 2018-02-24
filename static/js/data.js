@@ -1,3 +1,120 @@
+var pets_gold = 2;
+
+var pets_dmg = {
+	'all' : 2,
+	'tap' : 2,
+	'hero' : 4,
+	'splash' : 1,
+};
+
+var reducts = {
+	'gold' : 0.82,
+	'tap' : {
+		'hero' : 0,
+		'tap' : 1,
+		'pet' : 1,
+		'sc' : 2/3,
+		'hs' : 1,
+		'cs' : 0
+	},
+	'hero' : {
+		'hero' : 1,
+		'tap' : 1/2,
+		'pet' : 1/2,
+		'sc' : 2/3,
+		'hs' : 1/2,
+		'cs' : 1
+	},
+	'ds' : {
+		'hero' : 0,
+		'tap' : 1,
+		'pet' : 1/2,
+		'sc' : 2/2,
+		'hs' : 2/3,
+		'cs' : 1/2
+	},
+	'wc' : {
+		'hero' : 1,
+		'tap' : 1/2,
+		'pet' : 1,
+		'sc' : 2/3,
+		'hs' : 1/2,
+		'cs' : 1
+	},
+	'fs' : {
+		'hero' : 0,
+		'tap' : 1,
+		'pet' : 0,
+		'sc' : 1/2,
+		'hs' : 1,
+		'cs' : 0
+	},
+	'sad' : {
+		'hero' : 0,
+		'tap' : 1,
+		'pet' : 0,
+		'sc' : 2/3,
+		'hs' : 2/3,
+		'cs' : 0
+	},
+	'crit' : {
+		'hero' : 0,
+		'tap' : 1,
+		'pet' : 1,
+		'sc' : 1,
+		'hs' : 1,
+		'cs' : 1
+	},
+	'splash' : {
+		'hero' : 0,
+		'tap' : 0,
+		'pet' : 1,
+		'sc' : 1,
+		'hs' : 1,
+		'cs' : 1
+	},
+	'pet' : {
+		'hero' : 0,
+		'tap' : 0,
+		'pet' : 1,
+		'sc' : 0,
+		'hs' : 0,
+		'cs' : 0
+	},
+	'ship' : {
+		'hero' : 0,
+		'tap' : 0,
+		'pet' : 0,
+		'sc' : 0,
+		'hs' : 0,
+		'cs' : 1
+	},
+	'sc' : {
+		'hero' : 0,
+		'tap' : 0,
+		'pet' : 0,
+		'sc' : 1,
+		'hs' : 0,
+		'cs' : 0
+	},
+	'hs' : {
+		'hero' : 0,
+		'tap' : 0,
+		'pet' : 0,
+		'sc' : 0,
+		'hs' : 1,
+		'cs' : 0
+	},
+	'companion' : {
+		'hero' : 0,
+		'tap' : 0,
+		'pet' : 1,
+		'sc' : 1,
+		'hs' : 0,
+		'cs' : 1
+	},
+}
+
 var artifacts = {
 	'totalAD' : 0,
   'data' : {
@@ -7,7 +124,6 @@ var artifacts = {
 			'name' : 'Book of Shadows',
 			'nickname' : 'BoS',
 			'bonus' : ' Prestige Relic',
-			'rating' : 0,
 			'ad' : .3,
 			'effect' : .05,
 			'max' : -1,
@@ -17,8 +133,9 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 2.5,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'sum_sort' : 40
+			}
 		},
 		'sov' : {
 			'active' : 1,
@@ -26,7 +143,6 @@ var artifacts = {
 			'name' : 'Stone of the Valrunes',
 			'nickname' : 'SotV',
 			'bonus' : ' Basic Titan Gold',
-			'rating' : 0,
 			'ad' : .5,
 			'effect' : .3,
 			'max' : -1,
@@ -36,8 +152,14 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 1.8,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'gold' : [
+					'sov',
+					'all',
+					'splash',
+					'inactive'
+				]
+			}
 		},
 		'coc' : {
 			'active' : 1,
@@ -45,7 +167,6 @@ var artifacts = {
 			'name' : 'Chest of Contentment',
 			'nickname' : 'CoC',
 			'bonus' : ' Chesterson Gold',
-			'rating' : 0,
 			'ad' : .4,
 			'effect' : .25,
 			'max' : -1,
@@ -55,8 +176,13 @@ var artifacts = {
 			'ccoef' : 1,
 			'cexpo' : 1.8,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'gold' : [
+					'coc',
+					'fairy',
+					'all'
+				]
+			}
 		},
 		'hs' : {
 			'active' : 1,
@@ -64,7 +190,6 @@ var artifacts = {
 			'name' : 'Heroic Shield',
 			'nickname' : 'HSh',
 			'bonus' : ' Boss Gold',
-			'rating' : 0,
 			'ad' : .4,
 			'effect' : .2,
 			'max' : -1,
@@ -74,8 +199,12 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 1.8,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'gold' : [
+					'boss',
+					'all'
+				]
+			}
 		},
 		'bop' : {
 			'active' : 1,
@@ -83,7 +212,6 @@ var artifacts = {
 			'name' : 'Book of Prophecy',
 			'nickname' : 'BoP',
 			'bonus' : ' All Gold',
-			'rating' : .82,
 			'ad' : .3,
 			'effect' : .2,
 			'max' : -1,
@@ -93,8 +221,9 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 2.2,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'warning'
+			'expo' : {
+				'flat' : 'gold'
+			}
 		},
 		'zc' : {
 			'active' : 1,
@@ -102,7 +231,6 @@ var artifacts = {
 			'name' : 'Zakynthos Coin',
 			'nickname' : 'ZC',
 			'bonus' : ' Inactive Gold',
-			'rating' : 0,
 			'ad' : .3,
 			'effect' : .2,
 			'max' : -1,
@@ -112,8 +240,11 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 1.8,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'gold' : [
+					'inactive'
+				]
+			}
 		},
 		'gfa' : {
 			'active' : 1,
@@ -121,7 +252,6 @@ var artifacts = {
 			'name' : 'Great Fay Medallion',
 			'nickname' : 'GFM',
 			'bonus' : ' Fairy Gold',
-			'rating' : 0,
 			'ad' : .4,
 			'effect' : .1,
 			'max' : -1,
@@ -131,8 +261,12 @@ var artifacts = {
 			'ccoef' : 1,
 			'cexpo' : 1.8,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'gold' : [
+					'fairy',
+					'all'
+				]
+			}
 		},
 		'coe' : {
 			'active' : 1,
@@ -140,7 +274,6 @@ var artifacts = {
 			'name' : 'Coins of Ebizu',
 			'nickname' : 'CoE',
 			'bonus' : ' Splash Gold',
-			'rating' : .41,
 			'ad' : .5,
 			'effect' : .3,
 			'max' : -1,
@@ -150,8 +283,12 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 1.8,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'gold' : [
+					'all',
+					'splash'
+				]
+			}
 		},
 		'hsw' : {
 			'active' : 1,
@@ -159,7 +296,6 @@ var artifacts = {
 			'name' : 'Heavenly Sword',
 			'nickname' : 'HSw',
 			'bonus' : ' All Artifact Damage',
-			'rating' : 1,
 			'ad' : 1,
 			'effect' : .05,
 			'max' : -1,
@@ -169,8 +305,9 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 2.2,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'flat' : 'dmg'
+			}
 		},
 		'dr' : {
 			'active' : 1,
@@ -178,7 +315,6 @@ var artifacts = {
 			'name' : 'Divine Retribution',
 			'nickname' : 'DR',
 			'bonus' : ' All Damage',
-			'rating' : 1,
 			'ad' : 1,
 			'effect' : .1,
 			'max' : -1,
@@ -188,8 +324,9 @@ var artifacts = {
 			'ccoef' : 1,
 			'cexpo' : 2,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'flat' : 'dmg'
+			}
 		},
 		'dh' : {
 			'active' : 1,
@@ -197,7 +334,6 @@ var artifacts = {
 			'name' : 'Drunken Hammer',
 			'nickname' : 'DH',
 			'bonus' : ' Tap Damage',
-			'rating' : 0,
 			'ad' : .3,
 			'effect' : .1,
 			'max' : -1,
@@ -207,8 +343,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 1.7,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'tap'
+			}
 		},
 		'ss' : {
 			'active' : 1,
@@ -216,7 +353,6 @@ var artifacts = {
 			'name' : 'Samosek Sword',
 			'nickname' : 'SS',
 			'bonus' : ' Sword Attack Damage',
-			'rating' : 0,
 			'ad' : .5,
 			'effect' : .1,
 			'max' : -1,
@@ -226,8 +362,9 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 2,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'sad'
+			}
 		},
 		'tr' : {
 			'active' : 1,
@@ -235,7 +372,6 @@ var artifacts = {
 			'name' : 'The Retaliator',
 			'nickname' : 'TR',
 			'bonus' : ' Critical Damage',
-			'rating' : 0,
 			'ad' : .2,
 			'effect' : .1,
 			'max' : -1,
@@ -245,8 +381,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 1.7,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'crit'
+			}
 		},
 		'hb' : {
 			'active' : 1,
@@ -254,7 +391,6 @@ var artifacts = {
 			'name' : 'Hero\'s Blade',
 			'nickname' : 'HB',
 			'bonus' : ' All Hero Damage',
-			'rating' : 0,
 			'ad' : .5,
 			'effect' : .15,
 			'max' : -1,
@@ -264,8 +400,9 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 1.7,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'hero'
+			}
 		},
 		'tsos' : {
 			'active' : 1,
@@ -273,7 +410,6 @@ var artifacts = {
 			'name' : 'The Sword of Storms',
 			'nickname' : 'TSoS',
 			'bonus' : ' Melee Hero Damage',
-			'rating' : 0,
 			'ad' : .3,
 			'effect' : .2,
 			'max' : -1,
@@ -283,8 +419,9 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 1.7,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'hero_type' : 'melee'
+			}
 		},
 		'fb' : {
 			'active' : 1,
@@ -292,7 +429,6 @@ var artifacts = {
 			'name' : 'Furies\' Bow',
 			'nickname' : 'FB',
 			'bonus' : ' Ranged Hero Damage',
-			'rating' : 0,
 			'ad' : .3,
 			'effect' : .2,
 			'max' : -1,
@@ -302,8 +438,9 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 1.7,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'hero_type' : 'ranged'
+			}
 		},
 		'cota' : {
 			'active' : 1,
@@ -311,7 +448,6 @@ var artifacts = {
 			'name' : 'Charm of the Ancients',
 			'nickname' : 'CotA',
 			'bonus' : ' Spell Hero Damage',
-			'rating' : 0,
 			'ad' : .3,
 			'effect' : .2,
 			'max' : -1,
@@ -321,8 +457,9 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 1.7,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'hero_type' : 'spell'
+			}
 		},
 		'ttt' : {
 			'active' : 1,
@@ -330,7 +467,6 @@ var artifacts = {
 			'name' : 'Tiny Titan Tree',
 			'nickname' : 'TTT',
 			'bonus' : ' Ground Hero Damage',
-			'rating' : 0,
 			'ad' : .3,
 			'effect' : .2,
 			'max' : -1,
@@ -340,8 +476,9 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 1.7,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'hero_type' : 'ground'
+			}
 		},
 		'hh' : {
 			'active' : 1,
@@ -349,7 +486,6 @@ var artifacts = {
 			'name' : 'Helm of Hermes',
 			'nickname' : 'HoH',
 			'bonus' : ' Flying Hero Damage',
-			'rating' : 0,
 			'ad' : .3,
 			'effect' : .2,
 			'max' : -1,
@@ -359,8 +495,9 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 1.7,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'hero_type' : 'flying'
+			}
 		},
 		'foe' : {
 			'active' : 1,
@@ -368,7 +505,6 @@ var artifacts = {
 			'name' : 'Fruit of Eden',
 			'nickname' : 'FoE',
 			'bonus' : ' Pet Damage',
-			'rating' : 0,
 			'ad' : .5,
 			'effect' : .1,
 			'max' : -1,
@@ -378,8 +514,9 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 2,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'pet'
+			}
 		},
 		'ie' : {
 			'active' : 1,
@@ -387,7 +524,6 @@ var artifacts = {
 			'name' : 'Influential Elixir',
 			'nickname' : 'IE',
 			'bonus' : ' Clan Ship Damage',
-			'rating' : 0,
 			'ad' : .5,
 			'effect' : .1,
 			'max' : -1,
@@ -397,8 +533,9 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 1.7,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'ship'
+			}
 		},
 		'orc' : {
 			'active' : 1,
@@ -406,7 +543,6 @@ var artifacts = {
 			'name' : 'O\'Ryan\'s Charm',
 			'nickname' : 'oRC',
 			'bonus' : ' Companion Damage',
-			'rating' : 0,
 			'ad' : .5,
 			'effect' : .1,
 			'max' : -1,
@@ -416,8 +552,9 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 1.8,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'companion'
+			}
 		},
 		'hos2' : {
 			'active' : 1,
@@ -425,7 +562,6 @@ var artifacts = {
 			'name' : 'Heart of Storms',
 			'nickname' : 'HoS',
 			'bonus' : ' Pet Damage Bonuses',
-			'rating' : 0,
 			'ad' : .5,
 			'effect' : .005,
 			'max' : -1,
@@ -435,8 +571,9 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 2.2,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'sum' : 'pet_dmg'
+			}
 		},
 		'ao' : {
 			'active' : 1,
@@ -444,7 +581,6 @@ var artifacts = {
 			'name' : 'Apollo Orb',
 			'nickname' : 'AO',
 			'bonus' : ' Pet Gold Bonuses',
-			'rating' : 1.64,
 			'ad' : .5,
 			'effect' : .02,
 			'max' : -1,
@@ -454,8 +590,9 @@ var artifacts = {
 			'ccoef' : .7,
 			'cexpo' : 2.2,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'warning'
+			'expo' : {
+				'sum' : 'pet_gold'
+			}
 		},
 		'af' : {
 			'active' : 1,
@@ -463,7 +600,6 @@ var artifacts = {
 			'name' : 'Avian Feather',
 			'nickname' : 'AF',
 			'bonus' : ' Inactive Damage',
-			'rating' : 0,
 			'ad' : .3,
 			'effect' : .2,
 			'max' : -1,
@@ -473,16 +609,16 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 1.7,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'flat' : 'inactive'
+			}
 		},
 		'hos' : {
 			'active' : 1,
 			'sort' : 26,
 			'name' : 'Corrupted Rune Heart',
 			'nickname' : 'CRH',
-		'bonus' : ' Splash Damage',
-			'rating' : .5,
+			'bonus' : ' Splash Damage',
 			'ad' : .3,
 			'effect' : .00025,
 			'max' : -1,
@@ -492,8 +628,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 1.7,
 			'type' : 'pct',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'splash'
+			}
 		},
 		'td' : {
 			'active' : 1,
@@ -501,7 +638,6 @@ var artifacts = {
 			'name' : 'Durendal Sword',
 			'nickname' : 'DS',
 			'bonus' : ' Non-Boss Damage',
-			'rating' : 1,
 			'ad' : 1,
 			'effect' : .24,
 			'max' : -1,
@@ -511,8 +647,9 @@ var artifacts = {
 			'ccoef' : 1,
 			'cexpo' : 2,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'flat' : 'hsk'
+			}
 		},
 		'hs2' : {
 			'active' : 1,
@@ -520,7 +657,6 @@ var artifacts = {
 			'name' : 'Helheim Skull',
 			'nickname' : 'HSk',
 			'bonus' : ' Boss Damage',
-			'rating' : 1,
 			'ad' : 1,
 			'effect' : .12,
 			'max' : -1,
@@ -530,8 +666,9 @@ var artifacts = {
 			'ccoef' : 1,
 			'cexpo' : 2,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'flat' : 'dmg'
+			}
 		},
 		'roc' : {
 			'active' : 1,
@@ -539,7 +676,6 @@ var artifacts = {
 			'name' : 'Ring of Calisto',
 			'nickname' : 'RoC',
 			'bonus' : ' All Equipment Boost',
-			'rating' : 0,
 			'ad' : .5,
 			'effect' : .01,
 			'max' : -1,
@@ -549,8 +685,9 @@ var artifacts = {
 			'ccoef' : .65,
 			'cexpo' : 2.2,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'sum' : 'equip'
+			}
 		},
 		'bod' : {
 			'active' : 1,
@@ -558,7 +695,6 @@ var artifacts = {
 			'name' : 'Blade of Damocles',
 			'nickname' : 'BoD',
 			'bonus' : ' Sword Boost',
-			'rating' : 1,
 			'ad' : .5,
 			'effect' : .08,
 			'max' : -1,
@@ -568,8 +704,9 @@ var artifacts = {
 			'ccoef' : .65,
 			'cexpo' : 2,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'flat' : 'dmg'
+			}
 		},
 		'hom' : {
 			'active' : 1,
@@ -577,7 +714,6 @@ var artifacts = {
 			'name' : 'Helmet of Madness',
 			'nickname' : 'HoM',
 			'bonus' : ' Helmet Boost',
-			'rating' : 0,
 			'ad' : .5,
 			'effect' : .08,
 			'max' : -1,
@@ -587,8 +723,9 @@ var artifacts = {
 			'ccoef' : .65,
 			'cexpo' : 2,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'flat' : 'dmg'
+			}
 		},
 		'tp' : {
 			'active' : 1,
@@ -596,7 +733,6 @@ var artifacts = {
 			'name' : 'Titanium Plating',
 			'nickname' : 'TP',
 			'bonus' : ' Armor Boost',
-			'rating' : .82,
 			'ad' : .5,
 			'effect' : .08,
 			'max' : -1,
@@ -606,8 +742,9 @@ var artifacts = {
 			'ccoef' : .65,
 			'cexpo' : 2,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'warning'
+			'expo' : {
+				'flat' : 'gold'
+			}
 		},
 		'as' : {
 			'active' : 1,
@@ -615,7 +752,6 @@ var artifacts = {
 			'name' : 'Amethyst Staff',
 			'nickname' : 'ASt',
 			'bonus' : ' Slash Boost',
-			'rating' : 0,
 			'ad' : .5,
 			'effect' : .08,
 			'max' : -1,
@@ -625,8 +761,9 @@ var artifacts = {
 			'ccoef' : .65,
 			'cexpo' : 2,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'reduct' : 'companion'
+			}
 		},
 		'ig' : {
 			'active' : 1,
@@ -634,7 +771,6 @@ var artifacts = {
 			'name' : 'Invader\'s Gjalarhorn',
 			'nickname' : 'IG',
 			'bonus' : ' All Active Skill Effect',
-			'rating' : 0,
 			'ad' : .2,
 			'effect' : .02,
 			'max' : -1,
@@ -644,8 +780,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 1.8,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'sum' : 'skill'
+			}
 		},
 		'tm' : {
 			'active' : 1,
@@ -653,7 +790,6 @@ var artifacts = {
 			'name' : 'Titan\'s Mask',
 			'nickname' : 'TM',
 			'bonus' : ' Heavenly Strike Damage',
-			'rating' : 0,
 			'ad' : .2,
 			'effect' : .1,
 			'max' : -1,
@@ -663,8 +799,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 1.7,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'hs'
+			}
 		},
 		'rt' : {
 			'active' : 1,
@@ -672,7 +809,6 @@ var artifacts = {
 			'name' : 'Royal Toxin',
 			'nickname' : 'RT',
 			'bonus' : ' Deadly Strike Effect',
-			'rating' : 0,
 			'ad' : .2,
 			'effect' : .1,
 			'max' : -1,
@@ -682,8 +818,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 1.7,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'ds'
+			}
 		},
 		'lp' : {
 			'active' : 1,
@@ -691,7 +828,6 @@ var artifacts = {
 			'name' : 'Laborer\'s Pendant',
 			'nickname' : 'LP',
 			'bonus' : ' Hand of Midas Gold Bonus',
-			'rating' : .82,
 			'ad' : .2,
 			'effect' : .1,
 			'max' : -1,
@@ -701,8 +837,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 1.7,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'warning'
+			'expo' : {
+				'flat' : 'gold'
+			}
 		},
 		'bor' : {
 			'active' : 1,
@@ -710,7 +847,6 @@ var artifacts = {
 			'name' : 'Bringer of Ragnarok',
 			'nickname' : 'BoR',
 			'bonus' : ' Fire Sword Damage',
-			'rating' : 0,
 			'ad' : .2,
 			'effect' : .1,
 			'max' : -1,
@@ -720,8 +856,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 1.7,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'fs'
+			}
 		},
 		'pof' : {
 			'active' : 1,
@@ -729,7 +866,6 @@ var artifacts = {
 			'name' : 'Parchment of Foresight',
 			'nickname' : 'PoF',
 			'bonus' : ' War Cry Damage',
-			'rating' : 0,
 			'ad' : .2,
 			'effect' : .1,
 			'max' : -1,
@@ -739,8 +875,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 1.7,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'wc'
+			}
 		},
 		'eoe' : {
 			'active' : 1,
@@ -748,7 +885,6 @@ var artifacts = {
 			'name' : 'Elixir of Eden',
 			'nickname' : 'EoE',
 			'bonus' : ' Shadow Clone Damage',
-			'rating' : 0,
 			'ad' : .2,
 			'effect' : .1,
 			'max' : -1,
@@ -758,8 +894,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 1.7,
 			'type' : 'multiply',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'sc'
+			}
 		},
 		'hoti' : {
 			'active' : 1,
@@ -767,7 +904,6 @@ var artifacts = {
 			'name' : 'Hourglass of the Impatient',
 			'nickname' : 'HotI',
 			'bonus' : ' All Active Skill Cooldown',
-			'rating' : 1,
 			'ad' : .8,
 			'effect' : -0.02,
 			'max' : 40,
@@ -777,8 +913,9 @@ var artifacts = {
 			'ccoef' : .5,
 			'cexpo' : 2.6,
 			'type' : 'pct',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'sum' : 'skill'
+			}
 		},
 		'pt' : {
 			'active' : 1,
@@ -786,7 +923,6 @@ var artifacts = {
 			'name' : 'Phantom Timepiece',
 			'nickname' : 'PT',
 			'bonus' : 's All Active Skill Duration',
-			'rating' : 1,
 			'ad' : .8,
 			'effect' : 1,
 			'max' : 30,
@@ -796,8 +932,9 @@ var artifacts = {
 			'ccoef' : 1,
 			'cexpo' : 3,
 			'type' : 'add',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'sum' : 'skill'
+			}
 		},
 		'fs' : {
 			'active' : 1,
@@ -805,7 +942,6 @@ var artifacts = {
 			'name' : 'Forbidden Scroll',
 			'nickname' : 'FS',
 			'bonus' : 's Deadly Strike Duration',
-			'rating' : 0,
 			'ad' : 1.5,
 			'effect' : 2,
 			'max' : 30,
@@ -815,8 +951,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 2.4,
 			'type' : 'add',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'ds'
+			}
 		},
 		'rof' : {
 			'active' : 1,
@@ -824,7 +961,6 @@ var artifacts = {
 			'name' : 'Ring of Fealty',
 			'nickname' : 'RoF',
 			'bonus' : 's Hand of Midas Duration',
-			'rating' : .82,
 			'ad' : 1.5,
 			'effect' : 2,
 			'max' : 30,
@@ -834,8 +970,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 2.4,
 			'type' : 'add',
-			'level' : 0,
-			'color' : 'warning'
+			'expo' : {
+				'flat' : 'gold'
+			}
 		},
 		'ga' : {
 			'active' : 1,
@@ -843,7 +980,6 @@ var artifacts = {
 			'name' : 'Glacial Axe',
 			'nickname' : 'GA',
 			'bonus' : 's Fire Sword Duration',
-			'rating' : 0,
 			'ad' : 1.5,
 			'effect' : 2,
 			'max' : 30,
@@ -853,8 +989,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 2.4,
 			'type' : 'add',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'fs'
+			}
 		},
 		'a' : {
 			'active' : 1,
@@ -862,7 +999,6 @@ var artifacts = {
 			'name' : 'Aegis',
 			'nickname' : 'A',
 			'bonus' : 's War Cry Duration',
-			'rating' : 0,
 			'ad' : 1.5,
 			'effect' : 2,
 			'max' : 30,
@@ -872,8 +1008,9 @@ var artifacts = {
 			'gexpo' : 1,
 			'ccoef' : .6,
 			'type' : 'add',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'wc'
+			}
 		},
 		'sg' : {
 			'active' : 1,
@@ -881,7 +1018,6 @@ var artifacts = {
 			'name' : 'Swamp Guantlet',
 			'nickname' : 'SG',
 			'bonus' : 's Shadow Clone Duration',
-			'rating' : 0,
 			'ad' : 1.5,
 			'effect' : 2,
 			'max' : 30,
@@ -891,8 +1027,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 2.4,
 			'type' : 'add',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'sc'
+			}
 		},
 		'ip' : {
 			'active' : 1,
@@ -900,7 +1037,6 @@ var artifacts = {
 			'name' : 'Infinity Pendulum',
 			'nickname' : 'IP',
 			'bonus' : ' Heavenly Strike Mana Cost',
-			'rating' : 0,
 			'ad' : .9,
 			'effect' : -1,
 			'max' : 20,
@@ -910,8 +1046,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 3,
 			'type' : 'add',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'hs'
+			}
 		},
 		'gok' : {
 			'active' : 1,
@@ -919,7 +1056,6 @@ var artifacts = {
 			'name' : 'Glove of Kuma',
 			'nickname' : 'GoK',
 			'bonus' : ' Deadly Strike Mana Cost',
-			'rating' : 0,
 			'ad' : .8,
 			'effect' : -1,
 			'max' : 30,
@@ -929,8 +1065,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 3,
 			'type' : 'add',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'ds'
+			}
 		},
 		'ts' : {
 			'active' : 1,
@@ -938,7 +1075,6 @@ var artifacts = {
 			'name' : 'Titan Spear',
 			'nickname' : 'TS',
 			'bonus' : ' Hand of Midas Mana Cost',
-			'rating' : .82,
 			'ad' : .8,
 			'effect' : -1,
 			'max' : 40,
@@ -948,8 +1084,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 3,
 			'type' : 'add',
-			'level' : 0,
-			'color' : 'warning'
+			'expo' : {
+				'flat' : 'gold'
+			}
 		},
 		'os' : {
 			'active' : 1,
@@ -957,7 +1094,6 @@ var artifacts = {
 			'name' : 'Oak Staff',
 			'nickname' : 'OS',
 			'bonus' : ' Fire Sword Mana Cost',
-			'rating' : 0,
 			'ad' : .8,
 			'effect' : -1,
 			'max' : 30,
@@ -967,8 +1103,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 3,
 			'type' : 'add',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'fs'
+			}
 		},
 		'tac' : {
 			'active' : 1,
@@ -976,7 +1113,6 @@ var artifacts = {
 			'name' : 'The Arcana Cloak',
 			'nickname' : 'TAC',
 			'bonus' : ' War Cry Mana Cost',
-			'rating' : 0,
 			'ad' : .8,
 			'effect' : -1,
 			'max' : 40,
@@ -986,8 +1122,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 3,
 			'type' : 'add',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'wc'
+			}
 		},
 		'ho' : {
 			'active' : 1,
@@ -995,7 +1132,6 @@ var artifacts = {
 			'name' : 'Hunter\'s Ointment',
 			'nickname' : 'HO',
 			'bonus' : ' Shadow Clone Mana Cost',
-			'rating' : 0,
 			'ad' : .8,
 			'effect' : -1,
 			'max' : 40,
@@ -1005,8 +1141,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 3,
 			'type' : 'add',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'sc'
+			}
 		},
 		'ae' : {
 			'active' : 1,
@@ -1014,7 +1151,6 @@ var artifacts = {
 			'name' : 'Ambrosia Elixir',
 			'nickname' : 'AE',
 			'bonus' : ' Mana Pool Cap',
-			'rating' : 1,
 			'ad' : .8,
 			'effect' : 2,
 			'max' : 40,
@@ -1024,8 +1160,9 @@ var artifacts = {
 			'ccoef' : .6,
 			'cexpo' : 3,
 			'type' : 'add',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'sum' : 'skill'
+			}
 		},
 		'ms' : {
 			'active' : 1,
@@ -1033,7 +1170,6 @@ var artifacts = {
 			'name' : 'Mystic Staff',
 			'nickname' : 'MS',
 			'bonus' : ' Mana Regeneration',
-			'rating' : 1,
 			'ad' : 2,
 			'effect' : .075,
 			'max' : 40,
@@ -1043,8 +1179,9 @@ var artifacts = {
 			'ccoef' : .5,
 			'cexpo' : 2.6,
 			'type' : 'add',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'sum' : 'skill'
+			}
 		},
 		'eof' : {
 			'active' : 1,
@@ -1052,7 +1189,6 @@ var artifacts = {
 			'name' : 'Egg of Fortune',
 			'nickname' : 'EoF',
 			'bonus' : ' Chesterson Chance',
-			'rating' : 0,
 			'ad' : 2,
 			'effect' : .01,
 			'max' : 10,
@@ -1062,8 +1198,12 @@ var artifacts = {
 			'ccoef' : 1.4,
 			'cexpo' : 3,
 			'type' : 'pct',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'gold' : [
+					'coc',
+					'all'
+				]
+			}
 		},
 		'dc' : {
 			'active' : 1,
@@ -1071,7 +1211,6 @@ var artifacts = {
 			'name' : 'Divine Chalice',
 			'nickname' : 'DC',
 			'bonus' : ' 10x Gold Chance',
-			'rating' : 0,
 			'ad' : 1,
 			'effect' : .01,
 			'max' : 50,
@@ -1081,8 +1220,11 @@ var artifacts = {
 			'ccoef' : .8,
 			'cexpo' : 2.6,
 			'type' : 'pct',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'gold' : [
+					'active'
+				]
+			}
 		},
 		'is' : {
 			'active' : 1,
@@ -1090,7 +1232,6 @@ var artifacts = {
 			'name' : 'Invader\'s Shield',
 			'nickname' : 'IS',
 			'bonus' : ' Multiple Fairy Chance',
-			'rating' : .5,
 			'ad' : 1.6,
 			'effect' : 0.005,
 			'max' : 50,
@@ -1100,8 +1241,9 @@ var artifacts = {
 			'ccoef' : .5,
 			'cexpo' : 2.1,
 			'type' : 'pct',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'flat' : 'active'
+			}
 		},
 		'aom' : {
 			'active' : 1,
@@ -1109,7 +1251,6 @@ var artifacts = {
 			'name' : 'Axe of Muerte',
 			'nickname' : 'AoM',
 			'bonus' : ' Critical Chance',
-			'rating' : 0,
 			'ad' : 3,
 			'effect' : 0.005,
 			'max' : 20,
@@ -1119,8 +1260,9 @@ var artifacts = {
 			'ccoef' : .8,
 			'cexpo' : 2.5,
 			'type' : 'pct',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'crit'
+			}
 		},
 		'eotk' : {
 			'active' : 1,
@@ -1128,7 +1270,6 @@ var artifacts = {
 			'name' : 'Essence of the Kitsune',
 			'nickname' : 'EotK',
 			'bonus' : ' Multi-Spawn Chance',
-			'rating' : 1,
 			'ad' : 3,
 			'effect' : .005,
 			'max' : 20,
@@ -1138,8 +1279,9 @@ var artifacts = {
 			'ccoef' : .8,
 			'cexpo' : 2.5,
 			'type' : 'pct',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'flat' : 'dmg'
+			}
 		},
 		'lkm' : {
 			'active' : 1,
@@ -1147,7 +1289,6 @@ var artifacts = {
 			'name' : 'Lost King\'s Mask',
 			'nickname' : 'LKM',
 			'bonus' : ' All Upgrade Cost',
-			'rating' : 1,
 			'ad' : .8,
 			'effect' : -.02,
 			'max' : 40,
@@ -1157,8 +1298,9 @@ var artifacts = {
 			'ccoef' : .5,
 			'cexpo' : 3,
 			'type' : 'pct',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'flat' : 'dmg'
+			}
 		},
 		'sor' : {
 			'active' : 1,
@@ -1166,7 +1308,6 @@ var artifacts = {
 			'name' : 'Staff of Radiance',
 			'nickname' : 'SoR',
 			'bonus' : ' Hero Upgrade Cost',
-			'rating' : 0,
 			'ad' : .8,
 			'effect' : -.02,
 			'max' : 40,
@@ -1176,8 +1317,9 @@ var artifacts = {
 			'ccoef' : .5,
 			'cexpo' : 2.6,
 			'type' : 'pct',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'hero'
+			}
 		},
 		'tms' : {
 			'active' : 1,
@@ -1185,7 +1327,6 @@ var artifacts = {
 			'name' : 'The Master\'s Sword',
 			'nickname' : 'TMS',
 			'bonus' : ' Sword Master Upgrade Cost',
-			'rating' : 0,
 			'ad' : 2,
 			'effect' : -.02,
 			'max' : 40,
@@ -1195,8 +1336,9 @@ var artifacts = {
 			'ccoef' : .5,
 			'cexpo' : 2.6,
 			'type' : 'pct',
-			'level' : 0,
-			'color' : 'secondary'
+			'expo' : {
+				'reduct' : 'tap'
+			}
 		},
 		'as2' : {
 			'active' : 1,
@@ -1204,7 +1346,6 @@ var artifacts = {
 			'name' : 'Aram Spear',
 			'nickname' : 'ASp',
 			'bonus' : ' All Titan HP',
-			'rating' : 1,
 			'ad' : 2,
 			'effect' : -.02,
 			'max' : 40,
@@ -1214,8 +1355,9 @@ var artifacts = {
 			'ccoef' : .5,
 			'cexpo' : 2.6,
 			'type' : 'pct',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'flat' : 'dmg'
+			}
 		},
 		'wod' : {
 			'active' : 1,
@@ -1223,7 +1365,6 @@ var artifacts = {
 			'name' : 'Ward of Darkness',
 			'nickname' : 'WoD',
 			'bonus' : 's Boss Timer Duration',
-			'rating' : 1,
 			'ad' : 2,
 			'effect' : 1,
 			'max' : 60,
@@ -1233,8 +1374,9 @@ var artifacts = {
 			'ccoef' : .5,
 			'cexpo' : 2.6,
 			'type' : 'add',
-			'level' : 0,
-			'color' : 'info'
+			'expo' : {
+				'flat' : 'dmg'
+			}
 		}
 	}
 };
