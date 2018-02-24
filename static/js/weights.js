@@ -194,8 +194,8 @@ function adjustWeights() {
 						v.rating = 0;
 					} else {
 						v.rating = reducts.splash[build] * reducts.gold;
+						return false;
 					}
-					return false;
 				} else if('inactive' == v2) {
 					if(!active) {
 						v.rating = reducts.gold;
