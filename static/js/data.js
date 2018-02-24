@@ -13,7 +13,7 @@ var reducts = {
 		'hero' : 0,
 		'tap' : 1,
 		'pet' : 1,
-		'sc' : 2/3,
+		'sc' : 0.67,
 		'hs' : 1,
 		'cs' : 0
 	},
@@ -21,7 +21,7 @@ var reducts = {
 		'hero' : 1,
 		'tap' : 1/2,
 		'pet' : 1/2,
-		'sc' : 2/3,
+		'sc' : 0.67,
 		'hs' : 1/2,
 		'cs' : 1
 	},
