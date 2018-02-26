@@ -21,7 +21,7 @@ var reducts = {
 		'hero' : 1,
 		'tap' : 1,
 		'pet' : 1,
-		'sc' : .67,
+		'sc' : 1,
 		'hs' : 1,
 		'cs' : 1
 	},
