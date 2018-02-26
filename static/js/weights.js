@@ -147,7 +147,7 @@ function adjustWeights() {
 						v.rating = 1;
 						v.color = 'info';
 					} else {
-						v.rating = 0;
+						v.rating = 0.5;
 						v.color = 'secondary';
 					}
 					break;
