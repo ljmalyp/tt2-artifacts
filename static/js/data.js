@@ -724,7 +724,7 @@ var artifacts = {
 			'cexpo' : 2,
 			'type' : 'multiply',
 			'expo' : {
-				'flat' : 'dmg'
+				'reduct' : 'hero'
 			}
 		},
 		'tp' : {
