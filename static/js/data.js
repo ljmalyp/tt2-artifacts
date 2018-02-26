@@ -9,6 +9,22 @@ var pets_dmg = {
 
 var reducts = {
 	'gold' : 0.82,
+	'helmet' : {
+		'hero' : 1,
+		'tap' : 1,
+		'pet' : 1,
+		'sc' : .67,
+		'hs' : .67,
+		'cs' : 1
+	},
+	'sword' : {
+		'hero' : 1,
+		'tap' : 1,
+		'pet' : 1,
+		'sc' : .67,
+		'hs' : 1,
+		'cs' : 1
+	},
 	'tap' : {
 		'hero' : 0,
 		'tap' : 1,
@@ -705,7 +721,7 @@ var artifacts = {
 			'cexpo' : 2,
 			'type' : 'multiply',
 			'expo' : {
-				'flat' : 'dmg'
+				'reduct' : 'sword'
 			}
 		},
 		'hom' : {
@@ -724,7 +740,7 @@ var artifacts = {
 			'cexpo' : 2,
 			'type' : 'multiply',
 			'expo' : {
-				'reduct' : 'hero'
+				'reduct' : 'helmet'
 			}
 		},
 		'tp' : {
